@@ -72,6 +72,7 @@ class TrainingInterface:
         self.trainer.train()
 
 
+# TODO: make config file an argument
 if __name__ == "__main__":
     trainer = TrainingInterface.get_trainer_from_config(
         os.path.join(dirname, "config.json")
