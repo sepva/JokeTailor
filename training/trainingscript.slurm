@@ -9,9 +9,6 @@
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=seppe.vanswegenoven@student.kuleuven.be
 
-echo "installing cuda"
-module load CUDA
-
 echo "activating conda"
 conda activate joketailor
 

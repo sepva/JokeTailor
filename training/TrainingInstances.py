@@ -22,7 +22,7 @@ class DPO(TrainingInterface):
         lora=None,
     ):
         self.prompt = prompt
-        super().__init__(
+        self.initialize_all(
             model_id,
             dataset_id,
             percentage_data,
@@ -94,7 +94,15 @@ class CurryDPO(DPO):
         iteration=0,
         max_iterations=4,
     ):
-        super().__init__(
+        self.dataset_id = dataset_id
+        self.percentage_data = percentage_data
+        self.trainer_config = trainer_config
+        self.output_dir_base = trainer_config["output_dir"]
+        self.run_name_base = trainer_config["run_name"]
+        self.lora_config = lora_config
+        self.iteration = iteration
+        self.max_iterations = max_iterations
+        self.initialize_all(
             model_id,
             dataset_id,
             percentage_data,
@@ -104,14 +112,6 @@ class CurryDPO(DPO):
             bnb_config,
             lora,
         )
-        self.dataset_id = dataset_id
-        self.percentage_data = percentage_data
-        self.trainer_config = trainer_config
-        self.output_dir_base = trainer_config["output_dir"]
-        self.run_name_base = trainer_config["run_name"]
-        self.lora_config = lora_config
-        self.iteration = iteration
-        self.max_iterations = max_iterations
 
     def get_data(self, dataset_id, percentage_data):
         print("Getting data...")
@@ -157,7 +157,11 @@ class SFT(TrainingInterface):
         bnb_config=None,
         lora=None,
     ):
-        super().__init__(
+        self.prompt_function = lambda userId: [
+            {"role": "user", "content": prompt.format(userId=userId)}
+        ]
+        self.reasoning_column_name = reasoning_column_name
+        self.initialize_all(
             model_id,
             dataset_id,
             percentage_data,
@@ -166,10 +170,6 @@ class SFT(TrainingInterface):
             bnb_config,
             lora,
         )
-        self.prompt_function = lambda userId: [
-            {"role": "user", "content": prompt.format(userId=userId)}
-        ]
-        self.reasoning_column_name = reasoning_column_name
 
     def joke_with_reasoning_steps(self, row):
         joke = row["jokeText"]
@@ -227,7 +227,8 @@ class TestModelTrainer(TrainingInterface):
         bnb_config=None,
         lora=None,
     ):
-        super().__init__(
+        self.max_error_for_accuracy = max_error_for_accuracy
+        self.initialize_all(
             model_id,
             dataset_id,
             percentage_data,
@@ -236,7 +237,6 @@ class TestModelTrainer(TrainingInterface):
             bnb_config,
             lora,
         )
-        self.max_error_for_accuracy = max_error_for_accuracy
 
     def compute_metrics_for_regression(self, eval_pred):
         logits, labels = eval_pred
@@ -326,7 +326,7 @@ class CrossEncoderTrainer(TrainingInterface):
         bnb_config=None,
         lora=None,
     ):
-        super().__init__(
+        self.initialize_all(
             model_id,
             dataset_id,
             percentage_data,
