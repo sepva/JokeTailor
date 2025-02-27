@@ -1,1 +1,4 @@
 __pycache__
+.env
+wandb
+test_training_setup/

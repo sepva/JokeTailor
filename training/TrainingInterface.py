@@ -3,9 +3,12 @@ import json
 import torch
 import TrainingInstances
 import os
+from dotenv import load_dotenv
 
 dirname = os.path.dirname(__file__)
 
+load_dotenv()
+print(torch.cuda.is_available())
 
 class TrainingInterface:
 

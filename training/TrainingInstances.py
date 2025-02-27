@@ -21,6 +21,7 @@ class DPO(TrainingInterface):
         bnb_config=None,
         lora=None,
     ):
+        self.prompt = prompt
         super().__init__(
             model_id,
             dataset_id,
@@ -30,9 +31,9 @@ class DPO(TrainingInterface):
             bnb_config,
             lora,
         )
-        self.prompt_function = lambda userId: [
-            {"role": "user", "content": prompt.format(userId=userId)}
-        ]
+
+    def prompt_function(self, userId):
+        return [{"role": "user", "content": self.prompt.format(userId=userId)}]
 
     def process(self, row):
         prompt_in_chat = self.prompt_function(row["userId"])
