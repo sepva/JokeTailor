@@ -1,0 +1,16 @@
+{
+    "model_ids": [
+        "SeppeV/ernie2p0_ft_pref_1000",
+        "SeppeV/bert_340M_ft_first_1000_pref",
+        "SeppeV/xlnet_ft_pref_1000",
+        "SeppeV/debertav3large_ft_pref_1000"
+    ],
+    "weigths": [
+        0.1,
+        0.79,
+        0.07,
+        0.04
+    ],
+    "generated_jokes_db_name": "SeppeV/joke_gen_mistral_online_dpo_bert_judge_jo",
+    "result_ds_name": "results_joke_gen_mistral_online_dpo_bert_judge_jo"
+}

@@ -1,14 +1,10 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
-import json
 import torch
-import TrainingInstances
-import os
 from dotenv import load_dotenv
-
-dirname = os.path.dirname(__file__)
 
 load_dotenv()
 print(torch.cuda.is_available())
+
 
 class TrainingInterface:
 
@@ -22,17 +18,22 @@ class TrainingInterface:
         bnb_config=None,
         lora=None,
     ):
+        pass
+
+    def initialize_all(
+        self,
+        model_id,
+        dataset_id,
+        percentage_data,
+        trainer_config,
+        lora_config=None,
+        bnb_config=None,
+        lora=None,
+    ):
         self.model = self.get_model(model_id, bnb_config, lora)
         self.tokenizer = self.get_tokenizer(model_id)
         self.data = self.get_data(dataset_id, percentage_data)
         self.trainer = self.get_trainer(trainer_config, lora_config)
-
-    @staticmethod
-    def get_trainer_from_config(config_file):
-        with open(config_file, "r") as f:
-            config = json.load(f)
-            training_class = getattr(TrainingInstances, config["training_class"])
-            return training_class(**config["training_args"])
 
     def get_model(self, model_id, bnb_config, lora):
         print("Getting model...")
@@ -73,11 +74,3 @@ class TrainingInterface:
     def start_training(self):
         print("Start Training!")
         self.trainer.train()
-
-
-# TODO: make config file an argument
-if __name__ == "__main__":
-    trainer = TrainingInterface.get_trainer_from_config(
-        os.path.join(dirname, "config.json")
-    )
-    trainer.start_training()
