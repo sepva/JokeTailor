@@ -3,7 +3,6 @@ import torch
 from dotenv import load_dotenv
 
 load_dotenv()
-print(torch.cuda.is_available())
 
 
 class TrainingInterface:

@@ -3,13 +3,10 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, AutoModelForSeq2Se
 import torch
 import re
 import wandb
-from dotenv import load_dotenv
 
-load_dotenv()
+model_name = "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B"
 
-model_name = "google/flan-t5-xxl"
-
-model = AutoModelForSeq2SeqLM.from_pretrained(
+model = AutoModelForCausalLM.from_pretrained(
     model_name, torch_dtype="auto", device_map="auto"
 )
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -59,16 +56,19 @@ def add_joke_rating(rows):
     for response in responses:
         score = re.search(r"<score>(.*?)</score>", response, flags=re.DOTALL)
         if score != None:
-            scores.append(int(score.group(1)))
+            try:
+                scores.append(int(score.group(1)))
+            except:
+                scores.append(-1)
         else:
-            scores.append(1)
+            scores.append(-1)
 
     rows["score"] = scores
 
     return rows
 
 
-ds = load_dataset("SeppeV/JokeTailor_big_set", split="train")
+ds = load_dataset("SeppeV/JokeTailor_big_set_filtered", split="train")
 ds = ds.map(add_joke_rating, batched=True, batch_size=100)
 ds.push_to_hub("SeppeV/JokeTailor_big_set_filtered")
 
