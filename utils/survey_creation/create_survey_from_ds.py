@@ -152,7 +152,6 @@ def topic_dependend_survey(
                 jokeIds.append(random_jokeId)
                 joke_embeddings.append(random_embedding)
 
-                print(topic)
             all_embeddings.extend(joke_embeddings)
             pages.append(create_ranking_question(jokes_to_rank, jokeIds, i))
             last_ranking_choices.extend(

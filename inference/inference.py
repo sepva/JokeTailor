@@ -5,7 +5,6 @@ import json
 
 dirname = os.path.dirname(__file__)
 
-
 @click.command()
 @click.option(
     "--config_file",

@@ -130,15 +130,16 @@ class InferenceInterface:
         print(self.pipeline([userId])[0])
 
     def generate_jokes_for_users(
-        self, userIds, jokes_per_user, batch_size, output_ds_id
+        self, userIds, jokes_per_user, batch_size, output_ds_id, jokeId_template
     ):
         ds = Dataset.from_dict(
             {"userId": [userId for userId in userIds for _ in range(jokes_per_user)]}
         )
 
-        def gen_map(rows):
+        def gen_map(rows, idx):
             rows["jokeText"] = self.pipeline(rows["userId"])
+            rows["jokeId"] = [jokeId_template.format(userId=userId, jokeNr=id) for id, userId in zip(idx, rows["userId"])]
             return rows
 
-        ds = ds.map(gen_map, batched=True, batch_size=batch_size)
+        ds = ds.map(gen_map, batched=True, batch_size=batch_size, with_indices=True)
         ds.push_to_hub(output_ds_id)

@@ -1,0 +1,507 @@
+{'userId': 0, 'survey': '{
+        "title": "JokeTailor",
+        "logoPosition": "right",
+        "pages": [
+            {
+                "name": "page1",
+                "elements": [
+                    {
+                        "type": "text",
+                        "name": "e-mail",
+                        "width": "100%",
+                        "minWidth": "256px",
+                        "title": "Email address:",
+                        "inputType": "email"
+                    }
+                ]
+            },
+            {
+                "name": "page2",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking0",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_0_0",
+                                "text": " enveloping the world in a thick, icy blanket."
+                            },
+                            {
+                                "value": "RH_0_2752",
+                                "text": "Mark: What did the geologist say to his boss?\\nJohn: I don\\u2019t know.\\nMark: \\u201cPlease don\\u2019t take me for granite.\\u201d"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page3",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking1",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_0_1",
+                                "text": " enveloped in a thick layer of ice."
+                            },
+                            {
+                                "value": "RH_0_2243",
+                                "text": "I\'m a programmer, my wife works part-time in tech support. (NSFW)\\nLast Friday night, we felt a little frisky, so we made a trip to the bedroom. For her, everything went great. For me... Not so much. An hour later, I had yet to climax once.\\n\\nSo my wife had a brilliant idea. She went to our living room, grabbed some books we\'d bought so we could teach our kids to read. Real boring stuff, really. So she cracks one open and starts reading in a monotone. A few minutes later, I\'m bored out of my mind.\\n\\nThen, suddenly, she reaches over and starts jacking me off. Bam! Instant fountain.\\n\\n\\"That was great, but how\'d you know that was gonna work?\\" I asked her afterwards.\\n\\n\\"Oh, it was easy. Just had to turn you off and on again.\\""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page4",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking2",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_0_2",
+                                "text": " enveloping the globe in a thick layer of ice."
+                            },
+                            {
+                                "value": "RH_0_8126",
+                                "text": "What did one eyebrow say to the other? H-eyebrow"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page5",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking3",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_0_3",
+                                "text": " enveloped in a thick layer of ice."
+                            },
+                            {
+                                "value": "RH_0_9400",
+                                "text": "\\"You go girl\\" - asking my girlfriend to move out, but sassy like"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page6",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking4",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_0_4",
+                                "text": " enveloping the world."
+                            },
+                            {
+                                "value": "RH_0_7154",
+                                "text": "What do you call a rich Asian? *Cha Ching!*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page7",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking5",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "RH_0_7465",
+                                "text": "Why are diapers like $10 bills? Because you have to change them."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page8",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking6",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "RH_0_1930",
+                                "text": "Every \\u201cyo mamma\\u201d joke has been done thousands of time, by thousand of people.\\nKinda like yo mamma."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }'
+},
+{'userId': 1, 'survey': '{
+        "title": "JokeTailor",
+        "logoPosition": "right",
+        "pages": [
+            {
+                "name": "page1",
+                "elements": [
+                    {
+                        "type": "text",
+                        "name": "e-mail",
+                        "width": "100%",
+                        "minWidth": "256px",
+                        "title": "Email address:",
+                        "inputType": "email"
+                    }
+                ]
+            },
+            {
+                "name": "page2",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking0",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_1_5",
+                                "text": "The joke is about a baseball mitt that gets caught in a baseball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mitt getting caught in the ball. The joke is about the baseball mit"
+                            },
+                            {
+                                "value": "RH_1_6149",
+                                "text": "4-year-old: What\'s that? Me: A vegetable you won\'t like. If you don\'t tell Mom, I\'ll take it from you. *eats her bacon*"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page3",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking1",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_1_6",
+                                "text": "The joke is a classic:\\n\\n**LUKE: What did the glove say to the baseball?**\\n\\n**JAKE: I really don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\'t know.**\\n\\n**LUKE: What did the baseball mitt say to"
+                            },
+                            {
+                                "value": "RH_1_5223",
+                                "text": "Andrew: What does\\u00a0a clock do when\\u00a0it\\u2019s hungry?\\nPedro: Tell me.\\nAndrew: It goes\\u00a0back four seconds."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page4",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking2",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_1_7",
+                                "text": "Here\'s a joke for user 1:\\n\\nJoke:\\n\\nLUCKY: What did the glove say to the baseball?\\nLUKE: I really don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later!\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later!\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later!\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later!\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later!\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later!\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later!\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later!\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later!\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later!\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later!\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later!\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later!\\"\\nLUCKY: What"
+                            },
+                            {
+                                "value": "RH_1_3982",
+                                "text": "Julius:\\u00a0Why\\u00a0was the apple so lonely?\\nWinston:\\u00a0Why?\\nJulius:\\u00a0Because the banana split."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page5",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking3",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_1_8",
+                                "text": "Here are the jokes:\\n\\n**LUCKY JOKES**\\n\\n1. What did the glove say to the baseball?\\n2. What did the baseball mitt say to the baseball?\\n3. What did the baseball mitt say to the baseball?\\n4. What did the baseball mitt say to the baseball?\\n5. What did the baseball mitt say to the baseball?\\n6. What did the baseball mitt say to the baseball?\\n7. What did the baseball mitt say to the baseball?\\n8. What did the baseball mitt say to the baseball?\\n9. What did the baseball mitt say to the baseball?\\n10. What did the baseball mitt say to the baseball?\\n11. What did the baseball mitt say to the baseball?\\n12. What did the baseball mitt say to the baseball?\\n13. What did the baseball mitt say to the baseball?\\n14. What did the baseball mitt say to the baseball?\\n15. What did the baseball mitt say to the baseball?\\n16. What did the baseball mitt say to the baseball?\\n17. What did the baseball mitt say to the baseball?\\n18. What did the baseball mitt say to the baseball?\\n19. What did the baseball mitt say to the baseball?\\n20. What did the baseball mitt say to the baseball?\\n21. What did the baseball mitt say to the baseball?\\n22. What did the baseball mitt say to the baseball?\\n23. What did the baseball mitt say to the baseball?\\n24. What did the baseball mitt say to the baseball?\\n25. What did the baseball mitt say to the baseball?\\n26. What did the baseball mitt say to the baseball?\\n27. What did the baseball mitt say to the baseball?\\n28. What did the baseball mitt say to the baseball?\\n29. What did the baseball mitt say to the baseball?\\n30. What did the baseball mitt say to the baseball?\\n31. What did the baseball mitt say to the baseball?\\n32. What did the baseball mitt say to the baseball?\\n33. What did the baseball mitt say to the baseball?\\n34. What did the baseball mitt say to"
+                            },
+                            {
+                                "value": "RH_1_2757",
+                                "text": "Dad: Great news, son! We\\u2019ve saved enough\\u00a0money to go to Disneyland.\\nSon: That\\u2019s great! When are we going?\\nDad: As soon as we save enough to\\u00a0get back."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page6",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking4",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_1_9",
+                                "text": "Here\'s a joke for user 1:\\n\\nLUCY: What did the glove say to the baseball?\\nJAKE: I really don\'t know.\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don"
+                            },
+                            {
+                                "value": "RH_1_3965",
+                                "text": "DAFFYNITION:\\u00a0OVERCAST \\u2013 When\\u00a0Harry Potter\\u00a0messes up a spell."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page7",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking5",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "RH_1_9891",
+                                "text": "How did the toilet paper beat the asshole in the election? With a smear campaign."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page8",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking6",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "RH_1_7281",
+                                "text": "How did the dictator make it easier for power companies to do business with neighboring countries? He stepped down."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }'
+},
+{'userId': 2, 'survey': '{
+        "title": "JokeTailor",
+        "logoPosition": "right",
+        "pages": [
+            {
+                "name": "page1",
+                "elements": [
+                    {
+                        "type": "text",
+                        "name": "e-mail",
+                        "width": "100%",
+                        "minWidth": "256px",
+                        "title": "Email address:",
+                        "inputType": "email"
+                    }
+                ]
+            },
+            {
+                "name": "page2",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking0",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_2_10",
+                                "text": "This joke is inspired by the phrase \\"catch you later\\" in the context of baseball. The baseball mitt is the \\"catch you later\\" phrase, and the baseball is the \\"catch you later\\" phrase. The joke uses the phrase \\"catch you later\\" to create a humorous situation, where the baseball is the \\"catch you later\\" phrase, and the baseball mitt is the \\"catch you later\\" phrase.\\n\\nThe joke is cleverly worded to create a sense of absurdity, where the baseball mitt is the \\"catch you later\\" phrase and the baseball is the \\"catch you later\\" phrase. The joke\'s humor is based on the absurdity of the situation, where the baseball is the \\"catch you later\\" phrase and the baseball mitt is the \\"catch you later\\" phrase.\\n\\nThe joke\'s humor is also based on the absurdity of the situation, where the baseball mitt is the \\"catch you later\\" phrase and the baseball is the \\"catch you later\\" phrase. The joke\'s humor is also based on the absurdity of the situation, where the baseball mitt is the \\"catch you later\\" phrase and the baseball is the \\"catch you later\\" phrase.\\n\\nThe joke\'s humor is also based on the absurdity of the situation, where the baseball mitt is the \\"catch you later\\" phrase and the baseball is the \\"catch you later\\" phrase. The joke\'s humor is also based on the absurdity of the situation, where the baseball mitt is the \\"catch you later\\" phrase and the baseball is the \\"catch you later\\" phrase.\\n\\nThe joke\'s humor is also based on the absurdity of the situation, where the baseball mitt is the \\"catch you later\\" phrase and the baseball is the \\"catch you later\\" phrase. The joke\'s humor is also based on the absurdity of the situation, where the baseball mitt is the \\"catch you later\\" phrase and the baseball is the \\"catch you later\\" phrase.\\n\\nThe joke\'s humor is also based on the absurdity of the situation, where the baseball mitt is the \\"catch you later\\" phrase and the baseball is the \\"catch you later\\" phrase. The joke\'s humor is also based on the absurdity of the situation, where the baseball mitt is the \\"catch you later\\" phrase and the baseball is the \\"catch you later\\" phrase.\\n\\nThe joke\'s humor is also based on the absurdity of the situation, where the baseball mitt is the \\"catch you later\\""
+                            },
+                            {
+                                "value": "RH_2_5256",
+                                "text": "Luke: Why did the boy start a gardening service?\\nDave: Why?\\nLuke: He wanted to rake in some cash!"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page3",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking1",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_2_11",
+                                "text": "Here\'s a joke for user 2, using the words \\"luke\\" and \\"luke\\" in the same sentence:\\n\\nLUKE: What did the glove say to the baseball?\\nJAKE: I really don\'t know.\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I"
+                            },
+                            {
+                                "value": "RH_2_2802",
+                                "text": "Joe: What do you call a cow with no legs?\\nMonty: What?\\nJoe: Ground beef."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page4",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking2",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_2_12",
+                                "text": "Here is a joke for user 2, using the following words and do not copy blindly: LUKE: What did the glove say to the baseball?\\nJAKE: I really don\\u2019t know.\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\\u2019t know.\\nLUKE: \\u201cCatch you later.\\u201d\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\\u2019t know.\\nLUKE: \\u201cCatch you later!\\u201d\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\\u2019t know.\\nLUKE: \\u201cCatch you later.\\u201d\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\\u2019t know.\\nLUKE: \\u201cCatch you later.\\u201d\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\\u2019t know.\\nLUKE: \\u201cCatch you later.\\u201d\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\\u2019t know.\\nLUKE: \\u201cCatch you later.\\u201d\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\\u2019t know.\\nLUKE: \\u201cCatch you later.\\u201d\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\\u2019t know.\\nLUKE: \\u201cCatch you later.\\u201d\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\\u2019t know.\\nLUKE: \\u201cCatch you later.\\u201d\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\\u2019t know.\\nLUKE: \\u201cCatch you later.\\u201d\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\\u2019t know.\\nLUKE: \\u201cCatch you later.\\u201d\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\\u2019t know.\\nLUKE: \\u201cCatch you later.\\u201d\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\\u2019t know.\\nLUKE: \\u201cCatch you later.\\u201d"
+                            },
+                            {
+                                "value": "RH_2_1092",
+                                "text": "I\'m American, and I\'m sick of people saying America is \\"the stupidest country in the world.\\"\\nPersonally, I think Europe is the stupidest country in the world."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page5",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking3",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_2_13",
+                                "text": "Here\'s a joke that uses the word \\"mit\\" in a different way:\\n\\nLUKE: What did the glove say to the baseball?\\nJAKE: I really don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\"\\nJAKE: \\"Catch you later.\\""
+                            },
+                            {
+                                "value": "RH_2_10429",
+                                "text": "What do you call a gay drive-by? A fruit roll up."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page6",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking4",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_2_14",
+                                "text": "Here\'s a joke for user 2, using the following words and doing not copy blindly:\\n\\nLUKE: What did the glove say to the baseball?\\nJAKE: I really don\'t know.\\nLUKE: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nJAKE: I don\'t know.\\nLUKE"
+                            },
+                            {
+                                "value": "RH_2_8705",
+                                "text": "Top Rated Videos: OOps! Fail Blackflip .Hahaha Looser!!! http://streetpranks.blogspot.co.uk/2014/12/funny-poor-boy-sweet-backflip-lollss.html"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page7",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking5",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "RH_2_2652",
+                                "text": "Chris: What did the astronaut cook in his skillet?\\nChip: Beats me.\\nChris: Unidentified frying objects!"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "page8",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking6",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "RH_2_3749",
+                                "text": "XAVIER: Knock, knock.\\nJON: Who\\u2019s there?\\nXAVIER: Sawyer.\\nJON: Sawyer, who?\\nXAVIER: Sawyer picture on a wanted a poster."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }'
+},
+{'userId': 3, 'survey': '{
+        "title": "JokeTailor",
+        "logoPosition": "right",
+        "pages": [
+            {
+                "name": "page1",
+                "elements": [
+                    {
+                        "type": "text",
+                        "name": "e-mail",
+                        "width": "100%",
+                        "minWidth": "256px",
+                        "title": "Email address:",
+                        "inputType": "email"
+                    }
+                ]
+            },
+            {
+                "name": "page2",
+                "elements": [
+                    {
+                        "type": "ranking",
+                        "name": "ranking0",
+                        "title": "Rank (drag-and-drop) the following jokes from most to least funny.",
+                        "isRequired": true,
+                        "choices": [
+                            {
+                                "value": "FullGen_3_15",
+                                "text": "Here\'s a joke that uses the same word as the joke:\\n\\nLUCY: What did the glove say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUCY: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUCY: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUCY: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUCY: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUCY: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUCY: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUCY: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUCY: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUCY: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUCY: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUCY: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUCY: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"Catch you later.\\"\\nLUCY: What did the baseball mitt say to the baseball?\\nJAKE: I don\'t know.\\nLUKE: \\"C"}, {"value": "RH_3_10567", "text": "If you\'re afraid of elevators Take steps to avoid them."}]}]}, {"name": "page3", "elements": [{"type": "ranking", "name": "ranking1", "title": "Rank (drag-and-drop) the following jokes from most to least funny.", "isRequired": true, "choices": [{"value": "FullGen_3_16", "text": "Here\'s a joke for user 3:\\n\\nJake: What did the glove say to the baseball?\\nJake: I really don\'t know.\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake: What did the baseball mitt say to the baseball?\\nJake: I don\'t know.\\nJake: \\"Catch you later.\\"\\nJake"}, {"value": "RH_3_10118", "text": "I have an earning disability."}]}]}, {"name": "page4", "elements": [{"type": "ranking", "name": "ranking2", "title": "Rank (drag-and-drop) the following jokes from most to least funny.", "isRequired": true, "choices": [{"value": "FullGen_3_17", "text": "Here are some jokes for user 3, using the words and phrases from the given joke:\\n\\n**Joke 1: The Great Joke**\\n\\nLUCKY: \\"What did the glove say to the baseball? \\"\\n\\nJAKE: \\"I really don\'t know.\\"\\n\\n**Joke 2: The Missing Sock**\\n\\nLUKE: \\"What did the glove say to the baseball? \\"\\n\\nJAKE: \\"I don\'t know.\\"\\n\\n**Joke 3: The Joke**\\n\\nLUKE: \\"What did the glove say to the baseball? \\"\\n\\nJAKE: \\"I really don\'t know.\\"\\n\\n**Joke 4: The Great Joke**\\n\\nLUKE: \\"What did the glove say to the baseball? \\"\\n\\nJAKE: \\"I really don\'t know.\\"\\n\\n**Joke 5: The Missing Sock**\\n\\nLUKE: \\"What did the glove say to the baseball? \\"\\n\\nJAKE: \\"I don\'t know.\\"\\n\\n**Joke 6: The Joke**\\n\\nLUKE: \\"What did the glove say to the baseball? \\"\\n\\nJAKE: \\"I really don\'t know.\\"\\n\\n**Joke 7: The Great Joke**\\n\\nLUKE: \\"What did the glove say to the baseball? \\"\\n\\nJAKE: \\"I really don\'t know.\\"\\n\\n**Joke 8: The Joke**\\n\\nLUKE: \\"What did the glove say to the baseball? \\"\\n\\nJAKE: \\"I really don\'t know.\\"\\n\\n**Joke 9: The Great Joke**\\n\\nLUKE: \\"What did the glove say to the baseball? \\"\\n\\nJAKE: \\"I really don\'t know.\\"\\n\\n**Joke 10: The Joke**\\n\\nLUKE: \\"What did the glove say to the baseball? \\"\\n\\nJAKE: \\"I really don\'t know.\\"\\n\\n**Joke 11: The Great Joke**\\n\\nLUKE: \\"What did the glove say to the baseball? \\"\\n\\nJAKE: \\"I really don\'t know.\\"\\n\\n**Joke 12: The Joke**\\n\\nLUKE: \\"What did the glove say to the baseball? \\"\\n\\nJA"}, {"value": "RH_3_10290", "text": "I am really shocked that there is not a website devoted solely to the most clever Wi-Fi names of all-time."}]}]}, {"name": "page5", "elements": [{"type": "ranking", "name": "ranking3", "title": "Rank (drag-and-drop) the following jokes from most to least funny.", "isRequired": true, "choices": [{"value": "FullGen_3_18", "text": "What a great idea! I\'d be happy to help you generate a joke for user 3 using the following jokes as inspiration, but using other words and do not copy blindly:\\n\\n**Joke 1: The Greatest Hits**\\n\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\nJAKE: \\"What did the baseball get hit by?\\nJAKE: A baseball bat!\\n"}, {"value": "RH_3_9924", "text": "4-year-old from next door got a whistle for his birthday and I got 1 phone call."}]}]}, {"name": "page6", "elements": [{"type": "ranking", "name": "ranking4", "title": "Rank (drag-and-drop) the following jokes from most to least funny.", "isRequired": true, "choices": [{"value": "FullGen_3_19", "text": "The joke is:\\n\\n**LUKE: What did the glove say to the baseball?**\\n\\n**JAKE: I really don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know.**\\n\\n**LUKE: What did the baseball mitt say to the baseball?**\\n\\n**JAKE: I don\\u2019t know"}, {"value": "RH_3_5958", "text": "Donald Trump said that all the Mexicans he meets love him... they are always telling him he is a cool arrow."}]}]}, {"name": "page7", "elements": [{"type": "ranking", "name": "ranking5", "title": "Rank (drag-and-drop) the following jokes from most to least funny.", "isRequired": true, "choices": [{"value": "RH_3_3141", "text": "Jeffrey: Knock, knock.\\nJoseph: Who\\u2019s there?\\nJeffrey: Woo.\\nJoseph: Woo, who?\\nJeffrey: What are you cheering for? We didn\\u2019t win a medal."}]}]}, {"name": "page8", "elements": [{"type": "ranking", "name": "ranking6", "title": "Rank (drag-and-drop) the following jokes from most to least funny.", "isRequired": true, "choices": [{"value": "RH_3_2311", "text": "I found a website with guaranteed real virgins [NSFW
+                                ]\\nwww.reddit.com"}]}]}]}'}

@@ -6,6 +6,10 @@ from datasets import load_dataset
 import torch
 import statistics
 import random
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
@@ -25,7 +29,7 @@ class TestInterface:
         self.model_ids = model_ids
         self.weights = weigths
         self.generated_jokes_db_name = generated_jokes_db_name
-        self.results_ds_name = result_ds_name
+        self.result_ds_name = result_ds_name
         self.push_db = push_db
         self.batch_size = batch_size
         self.test_user_dependency = test_user_dependency
@@ -77,9 +81,7 @@ class TestInterface:
         return ds
 
     def test_joke_generation_output(self):
-        ds = self.score_generation_results(
-            self.tokenizers, self.models, self.weights, self.generated_jokes_db_name
-        )
+        ds = self.score_generation_results()
         if self.push_db:
             ds.push_to_hub(self.result_ds_name, split="train")
         else:
