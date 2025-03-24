@@ -27,9 +27,8 @@ class SurveyCreator:
         surveys = self.survey_method(
             self.ds, self.nr_of_surveys, self.nr_of_jokes_per_survey, self.joke_column
         )
-        print(surveys)
-        # if self.insert_surveys(surveys):
-        #     print("Succeeded!")
+        if self.insert_surveys(surveys):
+            print("Succeeded!")
 
     def get_collection(self):
         try:
@@ -135,7 +134,6 @@ def topic_dependend_survey(
 
             for _ in range(num_jokes_per_rank):
                 random_embedding = None
-                i = 0
                 while too_similar(
                     random_embedding, joke_embeddings, all_embeddings, model
                 ):
@@ -152,7 +150,6 @@ def topic_dependend_survey(
                 jokeIds.append(random_jokeId)
                 joke_embeddings.append(random_embedding)
 
-                print(topic)
             all_embeddings.extend(joke_embeddings)
             pages.append(create_ranking_question(jokes_to_rank, jokeIds, i))
             last_ranking_choices.extend(
