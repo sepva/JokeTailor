@@ -36,15 +36,16 @@ class TrainingInterface:
 
     def get_model(self, model_id, bnb_config, lora):
         print("Getting model...")
-        compute_dtype = getattr(torch, "float16")
+        # compute_dtype = getattr(torch, "float16")
 
         model = AutoModelForCausalLM.from_pretrained(
             model_id,
             torch_dtype=torch.bfloat16,
             low_cpu_mem_usage=True,
             trust_remote_code=True,
+            # attn_implementation="flash_attention_2",
             quantization_config=(
-                BitsAndBytesConfig(**bnb_config, bnb_4bit_compute_dtype=compute_dtype)
+                BitsAndBytesConfig(**bnb_config, bnb_4bit_compute_dtype=torch.bfloat16)
                 if bnb_config != None
                 else None
             ),

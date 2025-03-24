@@ -2,6 +2,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import torch
 from datasets import load_dataset, Dataset
 from RecRAG import RecRag
+from BoN import BoN
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -79,7 +80,12 @@ class InferenceInterface:
             rag = RecRag(**rag_config)
             rag_function = getattr(rag, rag_query_config.pop("method"))
 
-        # TODO: BoN implementation
+        generation_per_userId = 1
+        bon_used = False
+        if not bon_config is None:
+            bon_used = True
+            generation_per_userId = bon_config["extra_gen"]
+            bon_interface = BoN(**bon_config)
 
         def pipeline(userIds):
             suggestions = {}
@@ -105,6 +111,7 @@ class InferenceInterface:
                     add_generation_prompt=True,
                 )
                 for userId in userIds
+                for _ in range(generation_per_userId)
             ]
 
             model_inputs = self.tokenizer(
@@ -122,6 +129,9 @@ class InferenceInterface:
                 generated_ids, skip_special_tokens=True
             )
 
+            if bon_used:
+                responses = bon_interface.filter_best_responses(responses, userIds)
+
             return responses
 
         return pipeline
@@ -130,15 +140,16 @@ class InferenceInterface:
         print(self.pipeline([userId])[0])
 
     def generate_jokes_for_users(
-        self, userIds, jokes_per_user, batch_size, output_ds_id
+        self, userIds, jokes_per_user, batch_size, output_ds_id, jokeId_template
     ):
         ds = Dataset.from_dict(
             {"userId": [userId for userId in userIds for _ in range(jokes_per_user)]}
         )
 
-        def gen_map(rows):
+        def gen_map(rows, idx):
             rows["jokeText"] = self.pipeline(rows["userId"])
+            rows["jokeId"] = [jokeId_template.format(userId=userId, jokeNr=id) for id, userId in zip(idx, rows["userId"])]
             return rows
 
-        ds = ds.map(gen_map, batched=True, batch_size=batch_size)
+        ds = ds.map(gen_map, batched=True, batch_size=batch_size, with_indices=True)
         ds.push_to_hub(output_ds_id)

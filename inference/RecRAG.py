@@ -99,7 +99,7 @@ class RecRag:
         if make_repo:
             create_repo(repo_name, repo_type="dataset")
         api.upload_file(
-            path_or_fileobj=f"/kaggle/working/{fname}",
+            path_or_fileobj=fname,
             repo_id=repo_name,
             path_in_repo=fname,
             repo_type="dataset",
@@ -153,9 +153,9 @@ class RecRag:
             question_embedding, filtered_embeddings, top_k=top_k
         )
         hits = hits[0]  # Get the hits for the first query
-
+        
         ##### Re-Ranking #####
-        cross_inp = [[query_template, filtered_items[hit["corpus_id"]]] for hit in hits]
+        cross_inp = [[query_template.format(userId=userId), filtered_items[hit["corpus_id"]]] for hit in hits]
         cross_scores = self.cross_encoder.predict(cross_inp)
 
         if re_ranker:
@@ -197,6 +197,7 @@ class RecRag:
         self,
         userId,
         user_rec_size,
+        semantic_search_prompt,
         top_k,
         output_k,
         re_ranker=False,
@@ -208,13 +209,15 @@ class RecRag:
             user_recs, min_community_size, treshold
         )
         jokes = self.semantic_search(
-            f"Give me a joke for user {userId}",
+            userId,
+            semantic_search_prompt,
             top_k,
             output_k,
             re_ranker,
             user_recs,
             question_embedding=topic_embedding,
         )
+
         return jokes
 
     def choose_topic_embedding(self, user_recs, min_community_size=1, treshold=0.75):

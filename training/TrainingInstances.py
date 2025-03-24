@@ -6,6 +6,7 @@ from TrainingInterface import TrainingInterface
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from torch.utils.data import DataLoader
 from sentence_transformers import CrossEncoder, InputExample
+import random
 
 
 class DPO(TrainingInterface):
@@ -152,7 +153,7 @@ class SFT(TrainingInterface):
         percentage_data,
         trainer_config,
         prompt,
-        reasoning_column_name,
+        # reasoning_column_name,
         lora_config=None,
         bnb_config=None,
         lora=None,
@@ -160,7 +161,7 @@ class SFT(TrainingInterface):
         self.prompt_function = lambda userId: [
             {"role": "user", "content": prompt.format(userId=userId)}
         ]
-        self.reasoning_column_name = reasoning_column_name
+        # self.reasoning_column_name = reasoning_column_name
         self.initialize_all(
             model_id,
             dataset_id,
@@ -173,11 +174,11 @@ class SFT(TrainingInterface):
 
     def joke_with_reasoning_steps(self, row):
         joke = row["jokeText"]
-        reasoning = row[self.reasoning_column_name]
-        return f"--Reasoning--\n{reasoning}\n--Joke--\n<{joke}>"
+        # reasoning = row[self.reasoning_column_name]
+        return f"<joke>{joke}</joke>"
 
     def process(self, row):
-        prompt_in_chat = self.prompt_function(0)
+        prompt_in_chat = self.prompt_function(random.randint(0, 200))
         row["messages"] = [
             *prompt_in_chat,
             {"role": "assistant", "content": self.joke_with_reasoning_steps(row)},
@@ -223,11 +224,13 @@ class TestModelTrainer(TrainingInterface):
         percentage_data,
         trainer_config,
         max_error_for_accuracy,
+        prompt,
         lora_config=None,
         bnb_config=None,
         lora=None,
     ):
         self.max_error_for_accuracy = max_error_for_accuracy
+        self.prompt = prompt
         self.initialize_all(
             model_id,
             dataset_id,
@@ -248,7 +251,7 @@ class TestModelTrainer(TrainingInterface):
         single_squared_errors = ((logits - labels).flatten() ** 2).tolist()
 
         # Compute accuracy
-        # Based on the fact that the predicted score ~= true score only if |error| < max_error_for_accurace => error^2 < max_error_for_accuracy^2
+        # Based on the fact that the predicted score ~= true score only if |error| < max_error_for_accuracy => error^2 < max_error_for_accuracy^2
         accuracy = sum(
             [1 for e in single_squared_errors if e < self.max_error_for_accuracy**2]
         ) / len(single_squared_errors)
@@ -263,6 +266,7 @@ class TestModelTrainer(TrainingInterface):
             num_labels=1,
             low_cpu_mem_usage=True,
             trust_remote_code=True,
+            device_map="auto",
         )
 
         return model
@@ -270,7 +274,7 @@ class TestModelTrainer(TrainingInterface):
     def process(self, rows):
         labels = rows["rating"]
         input_texts = [
-            f"User {userId}: {jokeText}"
+            self.prompt.format(userId=userId, jokeText=jokeText)
             for userId, jokeText in zip(rows["userId"], rows["jokeText"])
         ]
         rows = self.tokenizer(
@@ -289,7 +293,7 @@ class TestModelTrainer(TrainingInterface):
 
         ds = ds.map(self.process, batched=True, batch_size=100)
         ds = ds.select_columns(
-            ["input_ids", "token_type_ids", "attention_mask", "labels"]
+            ["input_ids", "attention_mask", "label"]
         )
 
         split_db = ds.train_test_split(test_size=0.1)
@@ -301,7 +305,7 @@ class TestModelTrainer(TrainingInterface):
         print("Getting trainer...")
 
         trainer_config = TrainingArguments(**trainer_config)
-        self.tokenizer.push_to_hub(trainer_config.output_dir)
+        self.tokenizer.push_to_hub(trainer_config.hub_model_id)
 
         trainer = Trainer(
             self.model,
@@ -322,10 +326,14 @@ class CrossEncoderTrainer(TrainingInterface):
         dataset_id,
         percentage_data,
         trainer_config,
+        prompt,
+        hub_model_id,
         lora_config=None,
         bnb_config=None,
         lora=None,
-    ):
+    ):  
+        self.prompt = prompt
+        self.hub_model_id = hub_model_id
         self.initialize_all(
             model_id,
             dataset_id,
@@ -344,7 +352,7 @@ class CrossEncoderTrainer(TrainingInterface):
     def process(self, rows):
         labels = rows["rating"]
         rows["text"] = [
-            [f"Give me a joke for user {userId}", f"{jokeText}"]
+            [self.prompt.format(userId=userId), f"{jokeText}"]
             for userId, jokeText in zip(rows["userId"], rows["jokeText"])
         ]
         rows["label"] = [float(label) for label in labels]
@@ -368,4 +376,4 @@ class CrossEncoderTrainer(TrainingInterface):
     def start_training(self):
         print("Start Training!")
         self.model.fit(self.data, **self.trainer_config)
-        self.model.push_to_hub(self.trainer_config["output_path"])
+        self.model.push_to_hub(self.hub_model_id)

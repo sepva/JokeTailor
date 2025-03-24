@@ -1,13 +1,14 @@
 {
-    "training_class": "DPO",
+    "training_class": "SFT",
     "training_args": {
-        "model_id": "prithivMLmods/Bellatrix-Tiny-0.5B",
-        "dataset_id": "SeppeV/rated_jokes_dataset_from_jester_rlhf_format_with_reasoning",
-        "percentage_data": 1,
+        "model_id": "Qwen/Qwen2.5-72B-Instruct",
+        "dataset_id": "SeppeV/JokeTailor_big_set_annotated",
+        "percentage_data": 100,
         "trainer_config": {
-            "output_dir": "test_training_setup",
+            "hub_model_id": "SFT_joketailor_qwen72",
+            "output_dir": "/scratch/leuven/368/vsc36814/SFT_joketailor_qwen72",
             "report_to": "wandb",
-            "run_name": "test_training_setup",
+            "run_name": "test_SFT_setup_qwen",
             "per_device_train_batch_size": 10,
             "per_device_eval_batch_size": 10,
             "save_total_limit": 2,
@@ -21,6 +22,6 @@
             "bias": "none",
             "task_type": "CAUSAL_LM"
         },
-        "prompt": "Generate a joke for User {userId}"
+        "prompt": "Generate a joke:"
     }
 }

@@ -1,0 +1,44 @@
+{
+    "inference_config": {
+        "type": "generate_jokes_for_users",
+        "args": {
+            "userIds": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "jokes_per_user": 5,
+            "batch_size": 10,
+            "output_ds_id": "RecRag_inference",
+            "jokeId_template": "FullGen_{userId}_{jokeNr}"
+        }
+    },
+    "model_id": "HuggingFaceTB/SmolLM-360M-Instruct",
+    "system_prompt": "You are a comedian",
+    "user_prompt_template": "Generate a joke for user {userId}, use the following jokes as inspiration, but use other words and do not copy blindly: {suggestions}",
+    "generate_config": {
+        "do_sample": true,
+        "temperature": 0.4
+    },
+    "rag_config": {
+        "itemDB_id": "SeppeV/JokeTailor_big_set_annotated",
+        "userRatingDB_id": "SeppeV/rated_ds_test",
+        "bi_encoder_id": "all-roberta-large-v1",
+        "cross_encoder_id": "SeppeV/cross_encoder_test",
+        "item_column_name": "jokeText",
+        "item_embedding_file": "jokeTailor_embeddings.pkl",
+        "item_repo_name": "SeppeV/jokeTailor_embeddings",
+        "user_repo_name": "SeppeV/user_embeddings_test"
+    },
+    "rag_query_config": {
+        "method": "user_rec_search_without_topic",
+        "user_rec_size": 50,
+        "semantic_search_prompt": "Give me a joke for user {userId}",
+        "top_k": 25,
+        "output_k": 3,
+        "re_ranker": true,
+        "min_community_size": 1,
+        "treshold": 0.75
+    }
+}

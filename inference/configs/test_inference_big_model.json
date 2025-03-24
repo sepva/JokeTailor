@@ -1,0 +1,24 @@
+{
+    "inference_config": {
+        "type": "generate_jokes_for_users",
+        "args": {
+            "userIds": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "jokes_per_user": 5,
+            "batch_size": 5,
+            "output_ds_id": "qwen32_inference",
+            "jokeId_template": "FullGen_{userId}_{jokeNr}"
+        }
+    },
+    "model_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+    "system_prompt": "You are a comedian",
+    "user_prompt_template": "Generate a joke for user {userId}:",
+    "generate_config": {
+        "do_sample": true,
+        "temperature": 0.4
+    }
+}

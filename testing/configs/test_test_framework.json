@@ -1,0 +1,10 @@
+{
+    "model_ids": [
+        "SeppeV/test_model_test"
+    ],
+    "weigths": [
+        1
+    ],
+    "generated_jokes_db_name": "SeppeV/RecRag_inference",
+    "result_ds_name": "results_small_test"
+}
