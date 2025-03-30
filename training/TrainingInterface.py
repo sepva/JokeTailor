@@ -1,6 +1,8 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import torch
 from dotenv import load_dotenv
+from accelerate import PartialState
+# device_string = PartialState().process_index
 
 load_dotenv()
 
@@ -43,6 +45,7 @@ class TrainingInterface:
             torch_dtype=torch.bfloat16,
             low_cpu_mem_usage=True,
             trust_remote_code=True,
+            # device_map={'':device_string},
             # attn_implementation="flash_attention_2",
             quantization_config=(
                 BitsAndBytesConfig(**bnb_config, bnb_4bit_compute_dtype=torch.bfloat16)

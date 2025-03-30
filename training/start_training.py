@@ -14,7 +14,12 @@ dirname = os.path.dirname(__file__)
     help="Path to the config file",
     type=click.Path(exists=True),
 )
-def start_training(config_file):
+@click.option(
+    "--local_rank",
+    help="Local rank from deepspeed",
+)
+def start_training(config_file, local_rank):
+    print(f"Rank {local_rank} started training script")
     with open(config_file, "r") as f:
         config = json.load(f)
         trainer_class = getattr(TrainingInstances, config["training_class"])

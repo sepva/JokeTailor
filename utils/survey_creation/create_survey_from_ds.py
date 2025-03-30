@@ -192,7 +192,7 @@ if __name__ == "__main__":
     sc = SurveyCreator(
         "SeppeV/JokeTailor_big_set_annotated",
         topic_dependend_survey,
-        1,
+        10,
         28,
         "jokeText",
     )

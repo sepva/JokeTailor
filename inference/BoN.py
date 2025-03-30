@@ -5,6 +5,8 @@ from transformers import (
 import torch
 from datasets import Dataset
 from dotenv import load_dotenv
+import logging
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -20,9 +22,18 @@ class BoN:
         self.batch_size = batch_size
 
     def filter_best_responses(self, responses, userIds):
-        gen_per_userId = userIds.count(userIds[0])
-        df = self.score_generation_results(responses, userIds).to_pandas().sort_values("score", ascending=False).groupby("userId").head(gen_per_userId).sort_values("userId")
-        return df["jokeText"].to_list()
+        df = self.score_generation_results(responses, userIds).to_pandas()
+        grouped_df = df.sort_values("score", ascending=False).groupby("userId")
+        logger.info(f"DF for BoN: {df.head()}")
+        best_jokes = []
+        for userId, ranked_jokes in grouped_df.groups.items():
+            logger.info(f"UserId: {userId}")
+            amount_of_jokes = userIds.count(userId)
+            logger.info(f"Amount of jokes: {amount_of_jokes}")
+            logger.info(f"ranked jokes: {ranked_jokes}")
+            best_jokes.extend(df.iloc[ranked_jokes[:amount_of_jokes]]["jokeText"].to_list())
+            logger.info(f"best jokes: {best_jokes}")
+        return best_jokes
 
     def initialize_test_models(self, model_ids):
         print("Get tokenizers and models")

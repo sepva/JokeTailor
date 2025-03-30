@@ -1,0 +1,72 @@
+{
+    "inference_config": {
+        "type": "generate_jokes_for_users",
+        "args": {
+            "userIds": [
+                0,
+                1,
+                2
+            ],
+            "jokes_per_user": 10,
+            "batch_size": 20,
+            "output_ds_id": "FullMinusBon_for_survey",
+            "jokeId_template": "FullMinusBon_{userId}_{jokeNr}"
+        }
+    },
+    "model_id": "Qwen/Qwen2.5-32B-Instruct",
+    "lora": "SeppeV/dpo_qwen32B",
+    "system_prompt": "",
+    "user_prompt_template": "You are a highly skilled comedy writer specializing in clever wordplay, puns, story telling and situational humor.\nYour task is to create a funny, original joke based on some jokes for inspiration that are liked by your crowd. Use these to generate a new joke that will be a great crowd-pleaser.\nFollow these steps and explain the steps you take to construct the joke, keep this think process short and to the point:\n\n- Analyse the inspirational jokes: try to explain why the jokes are funny, what is the theme or topic of the joke, what type of joke is it (pun, observational, satire, dark humor…), what are the most important words in the joke etc.\n- Choose 1 of the suggestions and analyse its structure and what makes it funny.\n- Generate 5 potential punchlines that use the structure and idea of the chosen joke.\n- Rank the following jokes on the following pillars: funniness, how good it fits with the inspirational jokes and newness \n- Choose the best punchline based on these rankings\n- Put the final joke between xml tags like so: <joke> the joke </joke>\n\nNow generate a joke for user {userId} using the following joke as inspiration: {suggestions}",
+    "joke_tag": "joke",
+    "topics": [
+        "Politics",
+        "Sex (dirty jokes)",
+        "Work situations",
+        "Nature",
+        "News",
+        "Food",
+        "Bar (drinking)",
+        "Docter-patient",
+        "Light bulb joke",
+        "Yo mama joke",
+        "Word play",
+        "Knock-knock joke",
+        "Blondes joke",
+        "Religion",
+        "Sports",
+        "Technology",
+        "Mariage",
+        "Entertainment",
+        "Money",
+        "Familie"
+    ],
+    "generate_config": {
+        "do_sample": true,
+        "temperature": 0.6,
+        "max_new_tokens": 8000
+    },
+    "bnb_config": {
+        "load_in_4bit": true,
+        "bnb_4bit_quant_type": "nf4",
+        "bnb_4bit_use_double_quant": false
+    },
+    "rag_config": {
+        "itemDB_id": "SeppeV/JokeTailor_big_set_annotated",
+        "userRatingDB_id": "SeppeV/rated_ds_test",
+        "bi_encoder_id": "all-roberta-large-v1",
+        "cross_encoder_id": "SeppeV/cross_encoder_test",
+        "item_column_name": "jokeText",
+        "item_embedding_file": "jokeTailor_embeddings.pkl",
+        "item_repo_name": "SeppeV/jokeTailor_embeddings",
+        "user_repo_name": "SeppeV/user_embeddings_test"
+    },
+    "rag_query_config": {
+        "method": "user_rec_then_semantic_search",
+        "query": "Generate a joke with topic {topic}",
+        "user_rec_size": 1000,
+        "top_k": 50,
+        "output_k": 5,
+        "re_ranker": true,
+        "cross_encoder_query": "Generate a joke for user {userId}"
+    }
+}
