@@ -1,6 +1,6 @@
 import random
 
-from datasets import concatenate_datasets, load_dataset
+from datasets import concatenate_datasets, load_dataset, Dataset
 
 
 def add_dataset_info(r, dataset):
@@ -117,5 +117,12 @@ def remove_too_long_jokes():
 
     ds.push_to_hub("SeppeV/JokeTailor_big_set_annotated")
 
+def deduplicate_dataset():
+    df = load_dataset("SeppeV/JokeTailor_big_set_annotated", split="train").to_pandas()
+    df = df.drop_duplicates("jokeText")
+    ds = Dataset.from_pandas(df, preserve_index=False)
+    ds.push_to_hub("SeppeV/JokeTailor_big_set_annotated")
 
-remove_too_long_jokes()
+
+
+deduplicate_dataset()

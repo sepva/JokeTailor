@@ -5,16 +5,12 @@
         "dataset_id": "SeppeV/JokeTailor_big_set_annotated",
         "percentage_data": 100,
         "trainer_config": {
-            "hub_model_id": "SFT_joketailor_deepseekdistill14B",
-            "output_dir": "/scratch/leuven/368/vsc36814/SFT_joketailor_deepseekdistill14B",
+            "hub_model_id": "SFT_joketailor_qwen14",
+            "output_dir": "/scratch/leuven/368/vsc36814",
             "report_to": "wandb",
-            "run_name": "SFT_joketailor_deepseekdistill14B",
-            "per_device_train_batch_size": 1,
-            "per_device_eval_batch_size": 1,
-            "gradient_accumulation_steps": 2,
-            "gradient_checkpointing": true,
-            "eval_accumulation_steps": 2,
-            "optim": "adamw_bnb_8bit",
+            "run_name": "SFTqwen1.5",
+            "per_device_train_batch_size": 8,
+            "per_device_eval_batch_size": 8,
             "save_total_limit": 2,
             "eval_strategy": "epoch",
             "push_to_hub": true
@@ -25,6 +21,10 @@
             "r": 64,
             "bias": "none",
             "task_type": "CAUSAL_LM"
+        },
+        "bnb_config": {
+            "load_in_8bit": true,
+            "load_in_4bit": false
         },
         "prompt": "Generate a joke:"
     }

@@ -1,18 +1,21 @@
 {
     "training_class": "SFT",
     "training_args": {
-        "model_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B",
+        "model_id": "Qwen/Qwen2.5-72B-Instruct",
         "dataset_id": "SeppeV/JokeTailor_big_set_annotated",
         "percentage_data": 100,
         "trainer_config": {
-            "hub_model_id": "SFT_joketailor_deepseekdistill14B",
-            "output_dir": "/scratch/leuven/368/vsc36814/SFT_joketailor_deepseekdistill14B",
+            "hub_model_id": "SFT_joketailor_qwen72B",
+            "output_dir": "/scratch/leuven/368/vsc36814/SFT_joketailor_qwen72B",
             "report_to": "wandb",
-            "run_name": "SFT_joketailor_deepseekdistill14B",
+            "run_name": "SFT_joketailor_qwen32B",
             "per_device_train_batch_size": 8,
             "per_device_eval_batch_size": 8,
-            "gradient_accumulation_steps": 2,
-            "optim": "adamw_bnb_8bit",
+            "gradient_checkpointing": false,
+            "gradient_checkpointing_kwargs": {
+                "use_reentrant": false
+            },
+            "ddp_find_unused_parameters": false,
             "save_total_limit": 2,
             "eval_strategy": "epoch",
             "push_to_hub": true
@@ -23,6 +26,10 @@
             "r": 64,
             "bias": "none",
             "task_type": "CAUSAL_LM"
+        },
+        "bnb_config": {
+            "load_in_8bit": true,
+            "load_in_4bit": false
         },
         "prompt": "Generate a joke:"
     }

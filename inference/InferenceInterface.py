@@ -1,9 +1,15 @@
+import logging
+import random
+import re
+
 import torch
 from BoN import BoN
 from datasets import Dataset, load_dataset
 from dotenv import load_dotenv
 from RecRAG import RecRag
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -16,6 +22,8 @@ class InferenceInterface:
         system_prompt,
         user_prompt_template,
         generate_config,
+        topics=None,
+        joke_tag=None,
         bnb_config=None,
         lora=None,
         rag_config=None,
@@ -27,10 +35,12 @@ class InferenceInterface:
         self.pipeline = self.get_pipeline(
             system_prompt,
             user_prompt_template,
+            joke_tag,
             generate_config,
             rag_config,
             rag_query_config,
             bon_config,
+            topics,
         )
 
     def get_model(self, model_id, bnb_config, lora):
@@ -43,7 +53,6 @@ class InferenceInterface:
             low_cpu_mem_usage=True,
             trust_remote_code=True,
             device_map="auto",
-            attn_implementation="flash_attention_2",
             quantization_config=(
                 BitsAndBytesConfig(**bnb_config, bnb_4bit_compute_dtype=compute_dtype)
                 if bnb_config != None
@@ -69,16 +78,19 @@ class InferenceInterface:
         self,
         system_prompt,
         user_prompt_template,
+        joke_tag,
         generate_config,
         rag_config,
         rag_query_config,
         bon_config,
+        topics,
     ):
         rag_used = False
         if not rag_config is None:
             rag_used = True
             rag = RecRag(**rag_config)
             rag_function = getattr(rag, rag_query_config.pop("method"))
+            rag_query_template = rag_query_config["query"]
 
         generation_per_userId = 1
         bon_used = False
@@ -88,12 +100,30 @@ class InferenceInterface:
             bon_interface = BoN(**bon_config)
 
         def pipeline(userIds):
-            suggestions = {}
+            logger.info(f"Starting pipeline for userIds {userIds}")
+
+            if not topics is None:
+                chosen_topics = random.choices(topics, k=len(userIds))
+                logger.info(f"Chosen topics: {chosen_topics}")
+
+            suggestions = []
             if rag_used:
-                suggestions = {
-                    userId: rag_function(userId, **rag_query_config)
-                    for userId in userIds
-                }
+                logger.info(f"Calculating suggestions for userIds")
+                if not topics is None:
+                    for i, userId in enumerate(userIds):
+                        rag_query_config["query"] = rag_query_template.format(
+                            userId=userId, topic=chosen_topics[i]
+                        )
+                        logger.info(
+                            f"Getting suggestions for: {rag_query_config['query']}"
+                        )
+                        suggestions.append(rag_function(userId, **rag_query_config))
+                        logger.info(
+                            f"RAG returned following suggestions: {suggestions[i]} "
+                        )
+                else:
+                    for userId in userIds:
+                        suggestions.append(rag_function(userId, **rag_query_config))
 
             input_texts = [
                 self.tokenizer.apply_chat_template(
@@ -103,14 +133,19 @@ class InferenceInterface:
                             "role": "user",
                             "content": user_prompt_template.format(
                                 userId=str(userId),
-                                suggestions="\n".join(suggestions.get(userId, [])),
+                                suggestions=(
+                                    "\n- ".join(suggestions[i])
+                                    if len(suggestions) > 0
+                                    else ""
+                                ),
+                                topic=chosen_topics[i],
                             ),
                         },
                     ],
                     tokenize=False,
                     add_generation_prompt=True,
                 )
-                for userId in userIds
+                for i, userId in enumerate(userIds)
                 for _ in range(generation_per_userId)
             ]
 
@@ -118,9 +153,8 @@ class InferenceInterface:
                 input_texts, return_tensors="pt", padding=True, truncation=True
             ).to(self.model.device)
 
-            generated_ids = self.model.generate(
-                **model_inputs, max_new_tokens=512, **generate_config
-            )
+            logger.info("Generating outputs")
+            generated_ids = self.model.generate(**model_inputs, **generate_config)
             generated_ids = [
                 output_ids[len(input_ids) :]
                 for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
@@ -129,19 +163,44 @@ class InferenceInterface:
                 generated_ids, skip_special_tokens=True
             )
 
-            if bon_used:
-                responses = bon_interface.filter_best_responses(responses, userIds)
+            if not joke_tag is None:
+                jokes = []
+                failed = 0
+                logger.info("Extracting jokes")
+                for response in responses:
+                    joke = re.search(
+                        rf"<{joke_tag}>(.*?)</{joke_tag}>", response, flags=re.DOTALL
+                    )
+                    if joke != None:
+                        try:
+                            jokes.append(joke.group(1))
+                        except:
+                            jokes.append("")
+                            failed += 1
+                    else:
+                        jokes.append("")
+                        failed += 1
+                if failed > 0:
+                    logger.warning(f"Failed to extract {failed} jokes")
+            else:
+                jokes = responses
 
-            return responses
+            if bon_used:
+                logger.info("BoN filtering")
+                jokes = bon_interface.filter_best_responses(jokes, userIds)
+
+            return jokes
 
         return pipeline
 
     def prompt_pipeline(self, userId):
+        logging.basicConfig(filename="inference.log", level=logging.DEBUG)
         print(self.pipeline([userId])[0])
 
     def generate_jokes_for_users(
         self, userIds, jokes_per_user, batch_size, output_ds_id, jokeId_template
     ):
+        logging.basicConfig(filename="inference.log", level=logging.WARNING)
         ds = Dataset.from_dict(
             {"userId": [userId for userId in userIds for _ in range(jokes_per_user)]}
         )

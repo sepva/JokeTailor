@@ -10,6 +10,8 @@ from transformers.utils.logging import disable_progress_bar
 from random import sample
 import pandas as pd
 from dotenv import load_dotenv
+import logging
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -134,9 +136,11 @@ class RecRag:
         re_ranker=False,
         item_corpus_ids=None,
         question_embedding=None,
+        cross_encoder_query=None
     ):
         ##### Semantic Search #####
         if question_embedding == None:
+            logger.debug(f"query sem search: {query_template.format(userId=userId)}")
             question_embedding = self.bi_encoder.encode(
                 query_template.format(userId=userId), convert_to_tensor=True
             )
@@ -155,7 +159,11 @@ class RecRag:
         hits = hits[0]  # Get the hits for the first query
         
         ##### Re-Ranking #####
-        cross_inp = [[query_template.format(userId=userId), filtered_items[hit["corpus_id"]]] for hit in hits]
+        if cross_encoder_query is None:
+            cross_encoder_query = query_template
+        
+        logger.debug(f"query cross encoder: {cross_encoder_query.format(userId=userId)}")
+        cross_inp = [[cross_encoder_query.format(userId=userId), filtered_items[hit["corpus_id"]]] for hit in hits]
         cross_scores = self.cross_encoder.predict(cross_inp)
 
         if re_ranker:
@@ -187,10 +195,10 @@ class RecRag:
             raise Exception("The given user doesn't have a saved user embedding!")
 
     def user_rec_then_semantic_search(
-        self, userId, query, user_rec_size, top_k, output_k, re_ranker=False
+        self, userId, query, user_rec_size, top_k, output_k, re_ranker=False, cross_encoder_query=None,
     ):
         _, user_recs = self.user_rec_search(userId, user_rec_size)
-        jokes = self.semantic_search(query, top_k, output_k, re_ranker, user_recs)
+        jokes = self.semantic_search(userId, query, top_k, output_k, re_ranker, user_recs, cross_encoder_query=cross_encoder_query)
         return jokes
 
     def user_rec_search_without_topic(

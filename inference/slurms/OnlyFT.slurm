@@ -4,17 +4,17 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks=16
 #SBATCH --gpus-per-node=1
+#SBATCH --time=01:00:00
 #SBATCH --partition=gpu_h100
-#SBATCH --time=03:30:00
-#SBATCH --job-name=sft_test_qwen
+#SBATCH --job-name=OnlyFT
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=seppe.vanswegenoven@student.kuleuven.be
 
 echo "activating conda"
 conda activate joketailor
 
-echo "moving to training dir"
-cd $VSC_DATA/JokeTailor/training
+echo "moving to inference dir"
+cd $VSC_DATA/JokeTailor/inference
 
-echo "starting training script"
-python start_training.py -f configs/SFT_qwen32_1gpu.json
+echo "starting inference script"
+python inference.py -f configs/OnlyFT.json
