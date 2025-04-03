@@ -1,12 +1,14 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
-import torch
-from datasets import load_dataset, Dataset
-from RecRAG import RecRag
-from BoN import BoN
-from dotenv import load_dotenv
-import re
 import logging
 import random
+import re
+
+import torch
+from BoN import BoN
+from datasets import Dataset, load_dataset
+from dotenv import load_dotenv
+from RecRAG import RecRag
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+
 logger = logging.getLogger(__name__)
 
 load_dotenv()
@@ -38,7 +40,7 @@ class InferenceInterface:
             rag_config,
             rag_query_config,
             bon_config,
-            topics
+            topics,
         )
 
     def get_model(self, model_id, bnb_config, lora):
@@ -81,7 +83,7 @@ class InferenceInterface:
         rag_config,
         rag_query_config,
         bon_config,
-        topics
+        topics,
     ):
         rag_used = False
         if not rag_config is None:
@@ -109,14 +111,19 @@ class InferenceInterface:
                 logger.info(f"Calculating suggestions for userIds")
                 if not topics is None:
                     for i, userId in enumerate(userIds):
-                        rag_query_config["query"] = rag_query_template.format(userId=userId, topic=chosen_topics[i])
-                        logger.info(f"Getting suggestions for: {rag_query_config['query']}")
+                        rag_query_config["query"] = rag_query_template.format(
+                            userId=userId, topic=chosen_topics[i]
+                        )
+                        logger.info(
+                            f"Getting suggestions for: {rag_query_config['query']}"
+                        )
                         suggestions.append(rag_function(userId, **rag_query_config))
-                        logger.info(f"RAG returned following suggestions: {suggestions[i]} ")
+                        logger.info(
+                            f"RAG returned following suggestions: {suggestions[i]} "
+                        )
                 else:
                     for userId in userIds:
                         suggestions.append(rag_function(userId, **rag_query_config))
-               
 
             input_texts = [
                 self.tokenizer.apply_chat_template(
@@ -126,8 +133,12 @@ class InferenceInterface:
                             "role": "user",
                             "content": user_prompt_template.format(
                                 userId=str(userId),
-                                suggestions="\n- ".join(suggestions[i]) if len(suggestions)>0 else "",
-                                topic=chosen_topics[i]
+                                suggestions=(
+                                    "\n- ".join(suggestions[i])
+                                    if len(suggestions) > 0
+                                    else ""
+                                ),
+                                topic=chosen_topics[i],
                             ),
                         },
                     ],
@@ -143,9 +154,7 @@ class InferenceInterface:
             ).to(self.model.device)
 
             logger.info("Generating outputs")
-            generated_ids = self.model.generate(
-                **model_inputs, **generate_config
-            )
+            generated_ids = self.model.generate(**model_inputs, **generate_config)
             generated_ids = [
                 output_ids[len(input_ids) :]
                 for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
@@ -185,20 +194,23 @@ class InferenceInterface:
         return pipeline
 
     def prompt_pipeline(self, userId):
-        logging.basicConfig(filename='inference.log', level=logging.DEBUG)
+        logging.basicConfig(filename="inference.log", level=logging.DEBUG)
         print(self.pipeline([userId])[0])
 
     def generate_jokes_for_users(
         self, userIds, jokes_per_user, batch_size, output_ds_id, jokeId_template
     ):
-        logging.basicConfig(filename='inference.log', level=logging.WARNING)
+        logging.basicConfig(filename="inference.log", level=logging.WARNING)
         ds = Dataset.from_dict(
             {"userId": [userId for userId in userIds for _ in range(jokes_per_user)]}
         )
 
         def gen_map(rows, idx):
             rows["jokeText"] = self.pipeline(rows["userId"])
-            rows["jokeId"] = [jokeId_template.format(userId=userId, jokeNr=id) for id, userId in zip(idx, rows["userId"])]
+            rows["jokeId"] = [
+                jokeId_template.format(userId=userId, jokeNr=id)
+                for id, userId in zip(idx, rows["userId"])
+            ]
             return rows
 
         ds = ds.map(gen_map, batched=True, batch_size=batch_size, with_indices=True)
