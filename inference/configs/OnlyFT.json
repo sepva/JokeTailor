@@ -16,7 +16,7 @@
     "model_id": "Qwen/Qwen2.5-32B-Instruct",
     "lora": "SeppeV/dpo_qwen32B",
     "system_prompt": "",
-    "user_prompt_template": "You are a highly skilled comedy writer specializing in clever wordplay, puns, story telling and situational humor.\nYour task is to create a funny, original joke based on some topic or word for inspiration. Follow these steps and explain the steps you take to construct the joke:\n\n- Understand the topic: Analyze the word’s multiple meanings, sounds, or cultural connotations. Consider homophones, synonyms, idiomatic expressions, and slang. If the word is technical or abstract, simplify it for general understanding.\n- Generate a Theme: Develop a humorous situation, dialogue, or concept that incorporates the word. Think of creative setups involving irony, unexpected twists, or absurdity.\n- Find inspiration: Write 5 different jokes that can act as inspiration for the final one, use the previous steps as guideline.\n- Construct the Joke: Write a concise and polished joke with a clear setup and punchline using the inspirational jokes.\n- Put the final joke between xml tags like so: <joke> the joke </joke>\n \nNow generate a joke using the following topic {topic}:",
+    "user_prompt_template": "You are a highly skilled comedy writer specializing in clever wordplay, puns, story telling and situational humor.\nYour task is to create a funny, original joke based on some topic or word for inspiration. Follow these steps and explain the steps you take to construct the joke:\n\n- Understand the topic: Analyze the word’s multiple meanings, sounds, or cultural connotations. Consider homophones, synonyms, idiomatic expressions, and slang. If the word is technical or abstract, simplify it for general understanding.\n- Generate a Theme: Develop a humorous situation, dialogue, or concept that incorporates the word. Think of creative setups involving irony, unexpected twists, or absurdity.\n- Find inspiration: Write 2 different jokes that can act as inspiration for the final one, use the previous steps as guideline.\n- Construct the Joke: Write a concise and polished joke with a clear setup and punchline using the inspirational jokes.\n- Put the final joke between xml tags like so: <joke> the joke </joke>\n \nNow generate a joke using the following topic {topic}:",
     "joke_tag": "joke",
     "topics": [
         "Politics",
@@ -43,7 +43,8 @@
     "generate_config": {
         "do_sample": true,
         "temperature": 0.6,
-        "max_new_tokens": 3000
+        "max_new_tokens": 2000,
+        "min_new_tokens": 50
     },
     "bnb_config": {
         "load_in_4bit": true,

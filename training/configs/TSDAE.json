@@ -1,0 +1,18 @@
+{
+    "training_class": "TSDAE_BiEncoderTrainer",
+    "training_args": {
+        "model_id": "sentence-transformers/all-roberta-large-v1",
+        "dataset_id": "SeppeV/JokeTailor_big_set_annotated",
+        "percentage_data": 100,
+        "trainer_config": {
+            "epochs": 1,
+            "weight_decay": 0,
+            "scheduler": "constantlr",
+            "optimizer_params": {
+                "lr": 3e-5
+            },
+            "show_progress_bar": true
+        },
+        "hub_model_id": "roberta_TSDAE"
+    }
+}

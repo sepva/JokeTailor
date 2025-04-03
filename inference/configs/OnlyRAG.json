@@ -15,7 +15,7 @@
     },
     "model_id": "Qwen/Qwen2.5-32B-Instruct",
     "system_prompt": "",
-    "user_prompt_template": "You are a highly skilled comedy writer specializing in clever wordplay, puns, story telling and situational humor.\nYour task is to create a funny, original joke based on some jokes for inspiration that are liked by your crowd. Use these to generate a new joke that will be a great crowd-pleaser.\nFollow these steps and explain the steps you take to construct the joke:\n\n- Analyse the inspirational jokes: try to explain why the jokes are funny, what is the theme or topic of the joke, what type of joke is it (pun, observational, satire, dark humor…), what are the most important words in the joke etc.\n- Choose 1 of the suggestions and analyse its structure and what makes it funny.\n- Generate 5 potential punchlines that use the structure and idea of the chosen joke.\n- Rank the following jokes on the following pillars: funniness, how good it fits with the inspirational jokes and newness \n- Choose the best punchline based on these rankings\n- Put the final joke between xml tags like so: <joke> the joke </joke>\n\nNow generate a joke for user {userId} using the following joke as inspiration: {suggestions}",
+    "user_prompt_template": "You are a highly skilled comedy writer specializing in clever wordplay, puns, story telling and situational humor.\nYour task is to create a funny, original joke based on some jokes for inspiration that are liked by your crowd. Use these to generate a new joke that will be a great crowd-pleaser.\nFollow these steps and explain the steps you take to construct the joke, keep this think process short and to the point:\n\n- Analyse the inspirational jokes: try to explain why the jokes are funny, what is the theme or topic of the joke, what type of joke is it (pun, observational, satire, dark humor…), what are the most important words in the joke etc.\n- Choose 1 of the suggestions and analyse its structure and what makes it funny.\n- Generate 3 potential punchlines that use the structure and idea of the chosen joke.\n- Rank the following jokes on the following pillars: funniness, how good it fits with the inspirational jokes and newness \n- Choose the best punchline based on these rankings\n- Put the final joke between xml tags like so: <joke> the joke </joke>\n\nNow generate a joke for user {userId} using the following joke as inspiration: {suggestions}",
     "joke_tag": "joke",
     "topics": [
         "Politics",
@@ -42,7 +42,8 @@
     "generate_config": {
         "do_sample": true,
         "temperature": 0.6,
-        "max_new_tokens": 8000
+        "max_new_tokens": 2000,
+        "min_new_tokens": 50
     },
     "bnb_config": {
         "load_in_4bit": true,
@@ -64,7 +65,7 @@
         "query": "Generate a joke with topic {topic}",
         "user_rec_size": 1000,
         "top_k": 50,
-        "output_k": 5,
+        "output_k": 3,
         "re_ranker": true,
         "cross_encoder_query": "Generate a joke for user {userId}"
     }

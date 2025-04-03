@@ -5,3 +5,5 @@ test_training_setup/
 *.out
 *.cache
 *.pkl
+*.log
+*.png

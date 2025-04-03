@@ -7,6 +7,9 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from torch.utils.data import DataLoader
 from sentence_transformers import CrossEncoder, InputExample
 import random
+from sentence_transformers import SentenceTransformer, SentenceTransformerTrainer, SentenceTransformerTrainingArguments
+from sentence_transformers import models, datasets, losses
+from torch.utils.data import DataLoader
 
 
 class DPO(TrainingInterface):
@@ -377,3 +380,97 @@ class CrossEncoderTrainer(TrainingInterface):
         print("Start Training!")
         self.model.fit(self.data, **self.trainer_config)
         self.model.push_to_hub(self.hub_model_id)
+
+class TSDAE_BiEncoderTrainer(TrainingInterface):
+
+    def __init__(self, model_id, dataset_id, percentage_data, trainer_config, hub_model_id, lora_config=None, bnb_config=None, lora=None):
+        self.hub_model_id = hub_model_id
+        self.initialize_all(
+            model_id,
+            dataset_id,
+            percentage_data,
+            trainer_config,
+            lora_config,
+            bnb_config,
+            lora,
+        )
+
+    def get_model(self, model_id, bnb_config, lora):
+        print("Getting model...")
+        word_embedding_model = models.Transformer(model_id)
+        pooling_model = models.Pooling(word_embedding_model.get_word_embedding_dimension(), "cls")
+        model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
+        self.model_id = model_id
+        return model
+    
+    def get_data(self, dataset_id, percentage_data):
+        print("Getting data...")
+        ds = load_dataset(dataset_id, split=f"train[:{percentage_data}%]")
+        jokes = ds["jokeText"]
+        train_dataset = datasets.DenoisingAutoEncoderDataset(jokes)
+        return DataLoader(train_dataset, batch_size=8, shuffle=True)
+    
+    def get_trainer(self, trainer_config, lora_config):
+        print("Getting trainer...")
+        self.trainer_config = trainer_config
+        return None
+    
+    def start_training(self):
+        print("Start Training!")
+        train_loss = losses.DenoisingAutoEncoderLoss(
+            self.model, decoder_name_or_path=self.model_id, tie_encoder_decoder=True
+        )
+
+        self.model.fit(
+            train_objectives=[(self.data, train_loss)],
+            **self.trainer_config
+        )
+        self.model.push_to_hub(self.hub_model_id)
+
+class BiEncoderOnUserdataTrainer(TrainingInterface):
+
+    def __init__(self, model_id, dataset_id, percentage_data, trainer_config, prompt, lora_config=None, bnb_config=None, lora=None):
+        self.prompt = prompt
+        self.initialize_all(
+            model_id,
+            dataset_id,
+            percentage_data,
+            trainer_config,
+            lora_config,
+            bnb_config,
+            lora,
+        )
+
+    def get_model(self, model_id, bnb_config, lora):
+        print("Getting model...")
+        model = SentenceTransformer(model_id)
+        return model
+    
+    def process(self, row):
+        row["anchor"] = self.prompt.format(userId=row["userId"])
+        row["positive"] = row["chosen"][0]["content"]
+        row["negative"] = row["rejected"][0]["content"]
+        return row
+    
+    def get_data(self, dataset_id, percentage_data):
+        print("Getting data...")
+        ds = load_dataset(dataset_id, split=f"train[:{percentage_data}%]")
+        ds = ds.map(self.process)
+        ds = ds.select_columns(["anchor", "positive", "negative"])
+        split_db = ds.train_test_split(test_size=0.1)
+        train_dataset = split_db["train"]
+        eval_dataset = split_db["test"]
+        return train_dataset, eval_dataset
+    
+    def get_trainer(self, trainer_config, lora_config):
+        trainer_config = SentenceTransformerTrainingArguments(**trainer_config)
+
+        trainer = SentenceTransformerTrainer(
+            self.model,
+            args=trainer_config,
+            train_dataset=self.data[0],
+            eval_dataset=self.data[1],
+            loss=losses.MultipleNegativesRankingLoss(self.model)
+        )
+
+        return trainer
