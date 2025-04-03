@@ -111,6 +111,7 @@ def topic_dependend_survey(
 
     surveys = []
     for _ in range(nr_of_surveys):
+        print("Creating survey...")
         pages = [
             {
                 "name": "page1",
@@ -122,6 +123,7 @@ def topic_dependend_survey(
                         "minWidth": "256px",
                         "title": "Email address:",
                         "inputType": "email",
+                        "isRequired": True,
                     }
                 ],
             },

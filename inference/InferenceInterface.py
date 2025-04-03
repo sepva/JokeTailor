@@ -1,9 +1,9 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import torch
-from datasets import load_dataset, Dataset
-from RecRAG import RecRag
 from BoN import BoN
+from datasets import Dataset, load_dataset
 from dotenv import load_dotenv
+from RecRAG import RecRag
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 load_dotenv()
 
@@ -148,7 +148,10 @@ class InferenceInterface:
 
         def gen_map(rows, idx):
             rows["jokeText"] = self.pipeline(rows["userId"])
-            rows["jokeId"] = [jokeId_template.format(userId=userId, jokeNr=id) for id, userId in zip(idx, rows["userId"])]
+            rows["jokeId"] = [
+                jokeId_template.format(userId=userId, jokeNr=id)
+                for id, userId in zip(idx, rows["userId"])
+            ]
             return rows
 
         ds = ds.map(gen_map, batched=True, batch_size=batch_size, with_indices=True)
