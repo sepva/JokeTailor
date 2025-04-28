@@ -87,19 +87,12 @@ class GenerationSurveyCreator:
                 "name": "page1",
                 "elements": [
                     {
-                        "type": "text",
-                        "name": "passcode",
+                        "type": "html",
+                        "name": "intro",
                         "width": "100%",
                         "minWidth": "256px",
-                        "title": "Personal passcode:",
-                        "isRequired": True,
-                        "validators": [
-                            {
-                                "type": "expression",
-                                "text": "Wrong passcode...",
-                                "expression": "{passcode} = '" + passcode + "'",
-                            }
-                        ],
+                        "title": "Welcome to the second",
+                        "html": '<div className="container">\n<h4>Welcome to the second survey </h4>\n<p><strong>Thank you</strong > for starting with this second survey. As mentioned in the e-mail you received, this is the <strong>most important</strong > one as it will give me the final results for my thesis!</p>\n\n<p>The survey will be similar as the first one, but with different jokes. </p>\n\n<p>Hopefully there are some jokes that make you laugh! When you are ready to start, click next!</p>\n</div>',
                     }
                 ],
             },
@@ -158,7 +151,7 @@ gsc = GenerationSurveyCreator(
         "SeppeV/OnlyFT_for_survey",
         "SeppeV/FullMinusBon_for_survey",
     ],
-    "SeppeV/email_to_id_test",
+    "SeppeV/email_to_id_final",
     [
         [1, 1, 1, 1, 0, 0, 0, 0, 0, 0],
         [1, 0, 0, 0, 1, 1, 1, 0, 0, 0],

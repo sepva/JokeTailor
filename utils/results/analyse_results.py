@@ -122,7 +122,7 @@ def compute_wilcoxon_tests():
                 }
             )
 
-    return pd.DataFrame(results)
+    return pd.DataFrame(results).to_latex()
 
 
 def plot_win_matrix_heatmap(wins_matrix):
@@ -141,9 +141,9 @@ def plot_win_matrix_heatmap(wins_matrix):
     )
 
     # Add titles and labels
-    plt.title("Wins Matrix Heatmap")
-    plt.xlabel("Technique (Winner)")
-    plt.ylabel("Technique (Loser)")
+    # plt.title("Wins Matrix Heatmap")
+    plt.xlabel("Technique (Loser)")
+    plt.ylabel("Technique (Winner)")
     plt.xticks(rotation=45)
 
     # Display the plot
@@ -286,7 +286,6 @@ def plot_violin_strengths(result_df):
             for i, technique in enumerate(result_df["Technique"])
         }
     )
-    print(strengths_df)
 
     # Plot using seaborn's violin plot
     plt.figure(figsize=(10, 6))
@@ -296,6 +295,68 @@ def plot_violin_strengths(result_df):
     plt.title("Distribution of Technique Strengths Across Bootstrapped Samples")
     plt.xticks(rotation=45)
     plt.grid(True)
+    plt.show()
+
+
+def plot_violin_strengths_horizontal(result_df):
+
+    technique_to_better_name = {
+        "FullGen": "Full Generation\nPipeline",
+        "FullMinusBon": "Full Generation\nPipeline - BoN",
+        "OnlyRAG": "RAG with\nBase Model",
+        "OnlyFT": "Fine-tuned LLM",
+        "OnlySFT": "SFT LLM",
+        "RH": "Random Human\nJoke",
+        "BaseModel": "Base Model",
+        "RandomUID": "Full Generation Pipeline\nwith Random UID",
+    }
+
+    # Convert wide format into long format for seaborn
+    strengths_df = pd.DataFrame(
+        {
+            technique_to_better_name[technique]: result_df["All Strengths"].iloc[i]
+            for i, technique in enumerate(result_df["Technique"])
+        }
+    )
+    melted = strengths_df.melt(var_name="Technique", value_name="Strength")
+
+    # Sort techniques by median strength for clearer interpretation
+    medians = (
+        melted.groupby("Technique")["Strength"].median().sort_values(ascending=False)
+    )
+    melted["Technique"] = pd.Categorical(
+        melted["Technique"], categories=medians.index, ordered=True
+    )
+
+    # Set up plot
+    plt.figure(figsize=(12, 8))
+    sns.set(style="whitegrid")
+
+    ax = sns.violinplot(
+        data=melted,
+        y="Technique",
+        x="Strength",
+        orient="h",
+        palette="Set2",
+        scale="width",
+        inner="quartile",  # shows median and IQR
+    )
+
+    ax.set_xlabel("Estimated Strength", fontsize=14)
+    ax.set_ylabel("Technique", fontsize=14)
+    ax.tick_params(axis="both", labelsize=12)
+
+    # Bold y-tick labels (technique names)
+    ax.set_yticklabels(
+        [label.get_text() for label in ax.get_yticklabels()], weight="bold", fontsize=24
+    )
+
+    # Add grid for better reading of x-axis
+    ax.xaxis.grid(True)
+    ax.set_axisbelow(True)
+
+    # Tight layout
+    plt.tight_layout()
     plt.show()
 
 
@@ -311,12 +372,13 @@ def get_collection():
         raise Exception("The following error occurred: ", e)
 
 
-wins_matrix = get_rankings()
-print(wins_matrix)
-print(compute_wilcoxon_tests())
-plot_win_matrix_heatmap(wins_matrix)
-print(estimate_strengths())
+# wins_matrix = get_rankings()
+# print(wins_matrix)
+# print(compute_wilcoxon_tests())
+# plot_win_matrix_heatmap(wins_matrix)
+# print(estimate_strengths().to_latex())
 strengths_with_confidence_interval = estimate_strengths_with_confidence_interval()
 print(strengths_with_confidence_interval)
 # plot_strengths(strengths_with_confidence_interval)
-plot_violin_strengths(strengths_with_confidence_interval)
+# plot_violin_strengths(strengths_with_confidence_interval)
+plot_violin_strengths_horizontal(strengths_with_confidence_interval)

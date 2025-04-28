@@ -1,6 +1,6 @@
 import random
 
-from datasets import concatenate_datasets, load_dataset, Dataset
+from datasets import Dataset, concatenate_datasets, load_dataset
 
 
 def add_dataset_info(r, dataset):
@@ -70,7 +70,7 @@ def add_jokeIds():
 
 
 def remove_trailing_and_leading_whitespace():
-    ds = load_dataset("SeppeV/JokeTailor_big_set_annotated")
+    ds = load_dataset("SeppeV/FullGen_for_survey")
 
     def trimmer(r):
         r["jokeText"] = r["jokeText"].strip()
@@ -78,7 +78,7 @@ def remove_trailing_and_leading_whitespace():
 
     ds = ds.map(trimmer)
 
-    ds.push_to_hub("SeppeV/JokeTailor_big_set_annotated")
+    ds.push_to_hub("SeppeV/FullGen_for_survey")
 
 
 def remove_non_standard_topics():
@@ -117,6 +117,7 @@ def remove_too_long_jokes():
 
     ds.push_to_hub("SeppeV/JokeTailor_big_set_annotated")
 
+
 def deduplicate_dataset():
     df = load_dataset("SeppeV/JokeTailor_big_set_annotated", split="train").to_pandas()
     df = df.drop_duplicates("jokeText")
@@ -124,5 +125,4 @@ def deduplicate_dataset():
     ds.push_to_hub("SeppeV/JokeTailor_big_set_annotated")
 
 
-
-deduplicate_dataset()
+remove_trailing_and_leading_whitespace()

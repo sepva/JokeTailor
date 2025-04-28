@@ -12,8 +12,8 @@ load_dotenv()
 class SurveyResultDSCreator:
 
     def __init__(self):
-        self.email_to_id_ds_id = "SeppeV/email_to_id_0304"
-        self.result_ds_id = "SeppeV/survey_results_0304"
+        self.email_to_id_ds_id = "SeppeV/email_to_id_final"
+        self.result_ds_id = "SeppeV/survey_results_final"
         self.results = self.get_results()
 
     def add_results(self):

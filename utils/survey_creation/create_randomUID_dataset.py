@@ -10,6 +10,6 @@ def change_jokeId(row, idx):
 
 
 ds = load_dataset("SeppeV/FullGen_for_survey")
-ds = ds.map(change_jokeId, with_indices=True)
+ds = ds.map(change_jokeId, with_indices=True).select_columns(["jokeText", "jokeId"])
 
 ds.push_to_hub("SeppeV/RandomUID_for_survey")
