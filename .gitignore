@@ -7,3 +7,4 @@ test_training_setup/
 *.pkl
 *.log
 *.png
+*.xlsx

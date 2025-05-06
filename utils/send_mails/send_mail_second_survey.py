@@ -1,4 +1,5 @@
 import os
+import time
 
 import requests
 from dotenv import load_dotenv
@@ -13,17 +14,14 @@ def send_second_survey_mail(email, passcode, userId):
         "https://api.eu.mailgun.net/v3/jokesurvey.me/messages",
         auth=("api", os.getenv("MAIL", "API_KEY")),
         data={
-            "from": "JokeTailor survey <postmaster@jokesurvey.me>",
+            "from": "Survey Seppe Vanswegenoven <postmaster@jokesurvey.me>",
             "to": f"<{email}>",
-            "subject": "Second survey for JokeTailor",
+            "subject": "Second survey for JokeTailor (Thesis Seppe Vanswegenoven)",
             "text": f"""Hi! 
             
-The time has come for the second part of the JokeTailor survey.
-The survey will work exactly the same as the first one.
-To get access to the survey, you will need to fill in your personal passcode.
 
-Your passcode is: {passcode}
-You can access the survey by clicking on the following link: https://jokesurvey.me/second_survey/{userId}
+
+You can access the survey by clicking on the following link: https://jokesurvey.me/second_survey/{userId}/{passcode}
 
 If you have any questions or problems, please contact me at sepvanswe@gmail.com.
 Thank you very much for your time and effort!""",
@@ -38,8 +36,10 @@ def send_all_second_survey_mails():
             email = survey["e-mail"]
             passcode = survey["passcode"]
             userId = survey["userId"]
-            send_second_survey_mail(email, passcode, userId)
+            response = send_second_survey_mail(email, passcode, userId)
+            print(response.content)
             print("Mail sent to: ", email)
+            time.sleep(10)
         except Exception as e:
             print(
                 "The following error occurred: ",
