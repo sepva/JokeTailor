@@ -269,7 +269,7 @@ class TestModelTrainer(TrainingInterface):
             num_labels=1,
             low_cpu_mem_usage=True,
             trust_remote_code=True,
-            device_map="auto",
+            device_map="cuda",
         )
 
         return model

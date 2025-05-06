@@ -5,7 +5,7 @@
 #SBATCH --ntasks=18
 #SBATCH --gpus-per-node=1
 #SBATCH --partition=gpu_a100_debug
-#SBATCH --job-name=calculate_item_embeddings
+#SBATCH --job-name=calculate_embeddings
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=seppe.vanswegenoven@student.kuleuven.be
 

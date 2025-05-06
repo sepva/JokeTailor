@@ -2,11 +2,7 @@
     "inference_config": {
         "type": "generate_jokes_for_users",
         "args": {
-            "userIds": [
-                0,
-                1,
-                2
-            ],
+            "userIds": "list(range(105))",
             "jokes_per_user": 4,
             "batch_size": 12,
             "output_ds_id": "OnlyFT_for_survey",
@@ -14,7 +10,7 @@
         }
     },
     "model_id": "Qwen/Qwen2.5-32B-Instruct",
-    "lora": "SeppeV/dpo_qwen32B",
+    "lora": "SeppeV/JokeTailor_Qwen32B_DPO",
     "system_prompt": "",
     "user_prompt_template": "You are a highly skilled comedy writer specializing in clever wordplay, puns, story telling and situational humor.\nYour task is to create a funny, original joke based on some topic or word for inspiration. Follow these steps and explain the steps you take to construct the joke:\n\n- Understand the topic: Analyze the word’s multiple meanings, sounds, or cultural connotations. Consider homophones, synonyms, idiomatic expressions, and slang. If the word is technical or abstract, simplify it for general understanding.\n- Generate a Theme: Develop a humorous situation, dialogue, or concept that incorporates the word. Think of creative setups involving irony, unexpected twists, or absurdity.\n- Find inspiration: Write 2 different jokes that can act as inspiration for the final one, use the previous steps as guideline.\n- Construct the Joke: Write a concise and polished joke with a clear setup and punchline using the inspirational jokes.\n- Put the final joke between xml tags like so: <joke> the joke </joke>\n \nNow generate a joke using the following topic {topic}:",
     "joke_tag": "joke",

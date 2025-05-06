@@ -5,7 +5,7 @@
 #SBATCH --ntasks=18
 #SBATCH --gpus-per-node=1
 #SBATCH --partition=gpu_a100
-#SBATCH --time=01:00:00
+#SBATCH --time=06:00:00
 #SBATCH --job-name=dpo_qwen32B
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=seppe.vanswegenoven@student.kuleuven.be

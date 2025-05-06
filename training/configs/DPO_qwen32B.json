@@ -3,13 +3,13 @@
     "training_args": {
         "model_id": "Qwen/Qwen2.5-32B-Instruct",
         "lora": "SeppeV/SFT_joketailor_qwen32B",
-        "dataset_id": "SeppeV/dpo_ds_test",
+        "dataset_id": "SeppeV/DPODatasetJokeTailor",
         "percentage_data": 100,
         "trainer_config": {
-            "hub_model_id": "dpo_qwen32B",
-            "output_dir": "/scratch/leuven/368/vsc36814/dpo_qwen32B",
+            "hub_model_id": "JokeTailor_Qwen32B_DPO",
+            "output_dir": "/scratch/leuven/368/vsc36814/JokeTailor_Qwen32B_DPO",
             "report_to": "wandb",
-            "run_name": "dpo_qwen32B",
+            "run_name": "JokeTailor_Qwen32B_DPO",
             "per_device_train_batch_size": 2,
             "per_device_eval_batch_size": 2,
             "save_total_limit": 2,

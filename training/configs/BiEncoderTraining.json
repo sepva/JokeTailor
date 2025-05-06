@@ -1,14 +1,14 @@
 {
     "training_class": "BiEncoderOnUserdataTrainer",
     "training_args": {
-        "model_id": "sentence-transformers/all-roberta-large-v1",
-        "dataset_id": "SeppeV/dpo_ds_test",
+        "model_id": "SeppeV/roberta_TSDAE",
+        "dataset_id": "SeppeV/DPODatasetJokeTailor",
         "percentage_data": 100,
         "trainer_config": {
-            "hub_model_id": "bi_encoder_test",
-            "output_dir": "/scratch/leuven/368/vsc36814/bi_encoder_test",
+            "hub_model_id": "JokeTailorBiEncoder",
+            "output_dir": "/scratch/leuven/368/vsc36814/JokeTailorBiEncoder",
             "report_to": "wandb",
-            "run_name": "bi_encoder_test",
+            "run_name": "JokeTailorBiEncoder",
             "save_total_limit": 2,
             "eval_strategy": "epoch",
             "push_to_hub": true

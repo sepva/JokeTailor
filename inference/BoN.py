@@ -6,6 +6,7 @@ import torch
 from datasets import Dataset
 from dotenv import load_dotenv
 import logging
+from sentence_transformers import SentenceTransformer
 logger = logging.getLogger(__name__)
 
 load_dotenv()
@@ -15,11 +16,13 @@ device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 class BoN:
 
-    def __init__(self, score_models, model_weights, extra_gen, batch_size):
+    def __init__(self, score_models, model_weights, extra_gen, batch_size, sim_model, sim_limit=0.3):
         self.tokenizers, self.models = self.initialize_test_models(score_models)
         self.weights = model_weights
         self.extra_gen = extra_gen
         self.batch_size = batch_size
+        self.similarity_model = SentenceTransformer(sim_model)
+        self.sim_limit = sim_limit
 
     def filter_best_responses(self, responses, userIds):
         df = self.score_generation_results(responses, userIds).to_pandas()
@@ -31,9 +34,31 @@ class BoN:
             amount_of_jokes = userIds.count(userId)
             logger.info(f"Amount of jokes: {amount_of_jokes}")
             logger.info(f"ranked jokes: {ranked_jokes}")
-            best_jokes.extend(df.iloc[ranked_jokes[:amount_of_jokes]]["jokeText"].to_list())
+            best_jokes.extend(self.get_best_diverse_jokes(df.iloc[ranked_jokes]["jokeText"].to_list(), amount_of_jokes))
             logger.info(f"best jokes: {best_jokes}")
         return best_jokes
+
+    def get_best_diverse_jokes(self, jokes, amount_of_jokes):
+        best_jokes = [jokes[0]]
+        best_joke_embeddings = [self.similarity_model.encode(jokes[0])]
+        for joke in jokes[1:]:
+            joke_embedding = self.similarity_model.encode(joke)
+            if not self.too_similar(joke_embedding, best_joke_embeddings):
+                best_jokes.append(joke)
+                best_joke_embeddings.append(joke_embedding)
+
+        while len(best_jokes) < amount_of_jokes:
+            logger.info("not enough jokes, have to add one that is similar")
+            for joke in jokes[1:]:
+                if joke not in best_jokes:
+                    best_jokes.append(joke)
+        
+        return best_jokes[:amount_of_jokes]
+    
+    def too_similar(self, new_joke, joke_list):
+        sims_ranking = self.similarity_model.similarity([new_joke], joke_list)
+        logger.info(f"sims ranking: {sims_ranking}")
+        return any(sims_ranking[0] > self.sim_limit)
 
     def initialize_test_models(self, model_ids):
         print("Get tokenizers and models")

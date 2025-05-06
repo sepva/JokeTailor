@@ -1,10 +1,16 @@
 {
     "model_ids": [
-        "SeppeV/test_model_test"
+        "SeppeV/xlnet_test_model",
+        "SeppeV/BERT_test_model",
+        "SeppeV/ernie_test_model",
+        "SeppeV/JokeTailorTestModel"
     ],
     "weigths": [
-        1
+        0.25,
+        0.25,
+        0.25,
+        0.25
     ],
-    "generated_jokes_db_name": "SeppeV/RecRag_inference",
-    "result_ds_name": "results_small_test"
+    "generated_jokes_db_name": "SeppeV/second_survey_results",
+    "result_ds_name": "SeppeV/second_survey_results_sim_scores"
 }

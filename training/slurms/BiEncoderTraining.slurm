@@ -1,10 +1,10 @@
 #!/bin/bash -l
-#SBATCH --clusters=wice
-#SBATCH --account=intro_vsc36814
+#SBATCH --clusters=genius
+#SBATCH --account=lp_dtai1
 #SBATCH --nodes=1
-#SBATCH --ntasks=16
+#SBATCH --ntasks=9
 #SBATCH --gpus-per-node=1
-#SBATCH --partition=gpu_h100
+#SBATCH --partition=gpu_p100
 #SBATCH --job-name=bi_encoder
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=seppe.vanswegenoven@student.kuleuven.be

@@ -2,9 +2,9 @@ from RecRAG import RecRag
 
 recRAG = RecRag(
     "SeppeV/JokeTailor_big_set_annotated",
-    "SeppeV/rated_ds_test",
-    "all-roberta-large-v1",
-    "SeppeV/cross_encoder_test",
+    "SeppeV/RatedDatasetJokeTailor",
+    "SeppeV/JokeTailorBiEncoder",
+    "SeppeV/JokeTailorCrossEncoder",
     "jokeText",
     best_k=7
 )
@@ -15,4 +15,4 @@ recRAG.save_item_embeddings(
     make_repo=False,
 )
 
-recRAG.save_user_embeddings("SeppeV/user_embeddings_test")
+recRAG.save_user_embeddings("SeppeV/jokeTailor_user_embeddings")

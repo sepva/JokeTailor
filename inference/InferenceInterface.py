@@ -200,6 +200,9 @@ class InferenceInterface:
     def generate_jokes_for_users(
         self, userIds, jokes_per_user, batch_size, output_ds_id, jokeId_template
     ):
+        if type(userIds) == str:
+            userIds = eval(userIds)
+            
         logging.basicConfig(filename="inference.log", level=logging.WARNING)
         ds = Dataset.from_dict(
             {"userId": [userId for userId in userIds for _ in range(jokes_per_user)]}

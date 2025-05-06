@@ -2,19 +2,15 @@
     "inference_config": {
         "type": "generate_jokes_for_users",
         "args": {
-            "userIds": [
-                0,
-                1,
-                2
-            ],
+            "userIds": "list(range(105))",
             "jokes_per_user": 4,
             "batch_size": 8,
-            "output_ds_id": "FullGen_for_survey",
+            "output_ds_id": "FullGen_for_survey_NoSimsTest",
             "jokeId_template": "FullGen_{userId}_{jokeNr}"
         }
     },
     "model_id": "Qwen/Qwen2.5-32B-Instruct",
-    "lora": "SeppeV/dpo_qwen32B",
+    "lora": "SeppeV/JokeTailor_Qwen32B_DPO",
     "system_prompt": "",
     "user_prompt_template": "You are a highly skilled comedy writer specializing in clever wordplay, puns, story telling and situational humor.\nYour task is to create a funny, original joke based on some jokes for inspiration that are liked by your crowd. Use these to generate a new joke that will be a great crowd-pleaser.\nFollow these steps and explain the steps you take to construct the joke:\n\n- Analyse the inspirational jokes: try to explain why the jokes are funny, what is the theme or topic of the joke, what type of joke is it (pun, observational, satire, dark humor…), what are the most important words in the joke etc.\n- Choose 1 of the suggestions and analyse its structure and what makes it funny.\n- Generate 3 potential punchlines that use the structure and idea of the chosen joke.\n- Rank the following jokes on the following pillars: funniness, how good it fits with the inspirational jokes and newness \n- Choose the best punchline based on these rankings\n- Put the final joke between xml tags like so: <joke> the joke </joke>\n\nNow generate a joke for user {userId} using the following joke as inspiration: {suggestions}",
     "joke_tag": "joke",
@@ -42,7 +38,7 @@
     ],
     "generate_config": {
         "do_sample": true,
-        "temperature": 0.4,
+        "temperature": 0.6,
         "max_new_tokens": 2000,
         "min_new_tokens": 50
     },
@@ -53,23 +49,25 @@
     },
     "bon_config": {
         "score_models": [
-            "SeppeV/test_model_test"
+            "SeppeV/JokeTailorTestModel"
         ],
         "model_weights": [
             1
         ],
         "extra_gen": 5,
-        "batch_size": 5
+        "batch_size": 5,
+        "sim_model": "all-roberta-large-v1",
+        "sim_limit": 0.40
     },
     "rag_config": {
         "itemDB_id": "SeppeV/JokeTailor_big_set_annotated",
-        "userRatingDB_id": "SeppeV/rated_ds_test",
-        "bi_encoder_id": "all-roberta-large-v1",
-        "cross_encoder_id": "SeppeV/cross_encoder_test",
+        "userRatingDB_id": "SeppeV/RatedDatasetJokeTailor",
+        "bi_encoder_id": "SeppeV/JokeTailorBiEncoder",
+        "cross_encoder_id": "SeppeV/JokeTailorCrossEncoder",
         "item_column_name": "jokeText",
         "item_embedding_file": "jokeTailor_embeddings.pkl",
         "item_repo_name": "SeppeV/jokeTailor_embeddings",
-        "user_repo_name": "SeppeV/user_embeddings_test"
+        "user_repo_name": "SeppeV/jokeTailor_user_embeddings"
     },
     "rag_query_config": {
         "method": "user_rec_then_semantic_search",

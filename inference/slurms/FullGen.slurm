@@ -1,11 +1,11 @@
 #!/bin/bash -l
 #SBATCH --clusters=wice
-#SBATCH --account=intro_vsc36814
+#SBATCH --account=lp_dtai1
 #SBATCH --nodes=1
-#SBATCH --ntasks=16
+#SBATCH --ntasks=18
 #SBATCH --gpus-per-node=1
-#SBATCH --time=01:00:00
-#SBATCH --partition=gpu_h100
+#SBATCH --time=10:00:00
+#SBATCH --partition=gpu_a100
 #SBATCH --job-name=FullGen
 #SBATCH --mail-type=BEGIN,END,FAIL
 #SBATCH --mail-user=seppe.vanswegenoven@student.kuleuven.be

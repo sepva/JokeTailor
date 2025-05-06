@@ -2,11 +2,7 @@
     "inference_config": {
         "type": "generate_jokes_for_users",
         "args": {
-            "userIds": [
-                0,
-                1,
-                2
-            ],
+            "userIds": "list(range(105))",
             "jokes_per_user": 4,
             "batch_size": 12,
             "output_ds_id": "OnlyRAG_for_survey",
@@ -52,13 +48,13 @@
     },
     "rag_config": {
         "itemDB_id": "SeppeV/JokeTailor_big_set_annotated",
-        "userRatingDB_id": "SeppeV/rated_ds_test",
-        "bi_encoder_id": "all-roberta-large-v1",
-        "cross_encoder_id": "SeppeV/cross_encoder_test",
+        "userRatingDB_id": "SeppeV/RatedDatasetJokeTailor",
+        "bi_encoder_id": "SeppeV/JokeTailorBiEncoder",
+        "cross_encoder_id": "SeppeV/JokeTailorCrossEncoder",
         "item_column_name": "jokeText",
         "item_embedding_file": "jokeTailor_embeddings.pkl",
         "item_repo_name": "SeppeV/jokeTailor_embeddings",
-        "user_repo_name": "SeppeV/user_embeddings_test"
+        "user_repo_name": "SeppeV/jokeTailor_user_embeddings"
     },
     "rag_query_config": {
         "method": "user_rec_then_semantic_search",

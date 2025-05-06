@@ -2,14 +2,14 @@
     "training_class": "CrossEncoderTrainer",
     "training_args": {
         "model_id": "sentence-transformers/all-roberta-large-v1",
-        "dataset_id": "SeppeV/rated_ds_test",
+        "dataset_id": "SeppeV/RatedDatasetJokeTailor",
         "percentage_data": 100,
         "trainer_config": {
-            "output_path": "/scratch/leuven/368/vsc36814/cross_encoder_test",
+            "output_path": "/scratch/leuven/368/vsc36814/JokeTailorCrossEncoder",
             "epochs": 2,
             "warmup_steps": 5
         },
         "prompt": "Generate a joke for user {userId}",
-        "hub_model_id": "cross_encoder_test"
+        "hub_model_id": "JokeTailorCrossEncoder"
     }
 }
